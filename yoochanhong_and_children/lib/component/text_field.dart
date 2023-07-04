@@ -34,7 +34,7 @@ class CustomTextField extends StatefulWidget {
 class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: widget.width.w,
       height: widget.height != null ? widget.height!.h : null,
       child: TextFormField(
@@ -50,11 +50,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
           counterText: '',
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(20)),
-            borderSide: BorderSide(color: Color(0xffDBD7E0)),
+            borderSide: BorderSide(color: Color(0xffDBD7E0), width: 1),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(20)),
-            borderSide: BorderSide(color: Color(0xff5A9D59)),
+            borderSide: BorderSide(color: Color(0xff5A9D59), width: 2),
           ),
         ),
       ),
