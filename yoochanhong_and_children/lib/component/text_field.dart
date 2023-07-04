@@ -39,6 +39,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
       height: widget.height != null ? widget.height!.h : null,
       child: TextFormField(
         controller: widget.controller,
+        cursorColor: Colors.black,
         autofocus: widget.autofocus,
         keyboardType: widget.textInputType,
         textAlign:
