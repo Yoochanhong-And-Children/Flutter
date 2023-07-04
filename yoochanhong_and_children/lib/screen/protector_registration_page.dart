@@ -51,7 +51,8 @@ class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
           children: [
             SizedBox(height: 20.0.h),
             CustomTextField(
-              width: 352,
+              width: 328,
+              height: 60,
               controller: userNameController,
               fontSize: 14,
               maxLength: 20,
@@ -59,7 +60,8 @@ class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
             ),
             SizedBox(height: 20.0.h),
             CustomTextField(
-              width: 352,
+              width: 328,
+              height: 60,
               controller: protectorNameController,
               fontSize: 14,
               maxLength: 20,
@@ -67,7 +69,8 @@ class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
             ),
             SizedBox(height: 20.0.h),
             CustomTextField(
-              width: 352,
+              width: 328,
+              height: 60,
               controller: phoneNumberController,
               fontSize: 14,
               maxLength: 20,
