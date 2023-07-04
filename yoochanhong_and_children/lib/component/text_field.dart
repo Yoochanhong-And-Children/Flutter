@@ -10,8 +10,8 @@ class CustomTextField extends StatefulWidget {
     required this.maxLength,
     required this.autofocus,
     required this.helperText,
+    required this.hintText,
     this.height,
-    this.hintText,
     this.textAlign,
     this.textInputType,
   }) : super(key: key);
@@ -56,13 +56,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 widget.textAlign != null ? widget.textAlign! : TextAlign.start,
             onChanged: (value) => setState(() {}),
             maxLength: widget.maxLength,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
+              hintText: widget.hintText,
+              hintStyle: TextStyle(fontSize: 18.0.sp),
               counterText: '',
-              border: OutlineInputBorder(
+              border: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 borderSide: BorderSide(color: Color(0xffDBD7E0), width: 1),
               ),
-              focusedBorder: OutlineInputBorder(
+              focusedBorder: const OutlineInputBorder(
                 borderRadius: BorderRadius.all(Radius.circular(20)),
                 borderSide: BorderSide(color: Color(0xff5A9D59), width: 2),
               ),
