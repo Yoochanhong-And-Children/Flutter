@@ -34,16 +34,27 @@ class CustomTextField extends StatefulWidget {
 class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: widget.width.w,
       height: widget.height != null ? widget.height!.h : null,
       child: TextFormField(
         controller: widget.controller,
         autofocus: widget.autofocus,
         keyboardType: widget.textInputType,
-        textAlign: widget.textAlign != null ? widget.textAlign! : TextAlign.start,
+        textAlign:
+            widget.textAlign != null ? widget.textAlign! : TextAlign.start,
         onChanged: (value) => setState(() {}),
         maxLength: widget.maxLength,
+        decoration: const InputDecoration(
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+            borderSide: BorderSide(color: Color(0xffDBD7E0)),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20)),
+            borderSide: BorderSide(color: Color(0xff5A9D59)),
+          ),
+        ),
       ),
     );
   }
