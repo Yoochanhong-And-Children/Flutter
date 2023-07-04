@@ -35,9 +35,14 @@ class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
         title: Text(
-          '보호자 등록 페이지',
+          "보호자 등록",
+          style: TextStyle(color: Colors.black, fontSize: 24),
         ),
+        leading: IconButton(
+            onPressed: null, icon: Icon(Icons.arrow_back_ios_new_sharp)),
       ),
       body: Center(
         child: Column(
