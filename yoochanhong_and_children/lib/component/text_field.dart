@@ -46,6 +46,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
         onChanged: (value) => setState(() {}),
         maxLength: widget.maxLength,
         decoration: const InputDecoration(
+          counterText: '',
           border: OutlineInputBorder(
             borderRadius: BorderRadius.all(Radius.circular(20)),
             borderSide: BorderSide(color: Color(0xffDBD7E0)),
