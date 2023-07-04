@@ -6,7 +6,8 @@ class ProtectorRegistrationPage extends StatefulWidget {
   const ProtectorRegistrationPage({Key? key}) : super(key: key);
 
   @override
-  State<ProtectorRegistrationPage> createState() => _ProtectorRegistrationPageState();
+  State<ProtectorRegistrationPage> createState() =>
+      _ProtectorRegistrationPageState();
 }
 
 class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
@@ -52,7 +53,7 @@ class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
             SizedBox(height: 20.0.h),
             CustomTextField(
               width: 352,
-              controller: userNameController,
+              controller: protectorNameController,
               fontSize: 14,
               maxLength: 20,
               autofocus: false,
@@ -60,7 +61,7 @@ class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
             SizedBox(height: 20.0.h),
             CustomTextField(
               width: 352,
-              controller: userNameController,
+              controller: phoneNumberController,
               fontSize: 14,
               maxLength: 20,
               autofocus: false,
