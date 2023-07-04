@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:yoochanhong_and_children/common/common.dart';
 import 'package:yoochanhong_and_children/component/text_field.dart';
 
 class ProtectorRegistrationPage extends StatefulWidget {
@@ -34,6 +35,7 @@ class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: CustomColor.backgroundColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
