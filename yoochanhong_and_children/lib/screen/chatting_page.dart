@@ -137,6 +137,8 @@ class _ChattingPageState extends State<ChattingPage> {
                           child: TextField(
                             controller: textEditingController,
                             cursorColor: Colors.black,
+                            autofocus: true,
+                            keyboardType: TextInputType.text,
                             decoration: const InputDecoration(
                               border: OutlineInputBorder(
                                 borderRadius:
