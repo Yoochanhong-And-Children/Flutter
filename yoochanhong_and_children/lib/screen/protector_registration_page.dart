@@ -4,6 +4,8 @@ import 'package:transition/transition.dart';
 import 'package:yoochanhong_and_children/common/common.dart';
 import 'package:yoochanhong_and_children/component/text_field.dart';
 import 'package:yoochanhong_and_children/screen/main_page.dart';
+import 'package:yoochanhong_and_children/service/sign_up.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProtectorRegistrationPage extends StatefulWidget {
   const ProtectorRegistrationPage({Key? key}) : super(key: key);
@@ -45,13 +47,10 @@ class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
         title: Text(
           "보호자 등록",
           style: TextStyle(
-            color: Colors.black,
-            fontSize: 24.sp,
-            fontFamily: 'ExtraBold'
-          ),
+              color: Colors.black, fontSize: 24.sp, fontFamily: 'ExtraBold'),
         ),
         leading: IconButton(
-          onPressed: (){
+          onPressed: () {
             Navigator.of(context).pop();
           },
           icon: const Icon(
@@ -102,13 +101,26 @@ class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  Transition(
-                    child: const MainPage(),
-                    transitionEffect: TransitionEffect.RIGHT_TO_LEFT,
-                  )
-                );
+                signUp(userNameController.text, protectorNameController.text,
+                        "device_token", phoneNumberController.text)
+                    .then((value) async {
+                  if (value == 1) {
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    await prefs.setString(
+                        "guardian_name", protectorNameController.text);
+                    await prefs.setString(
+                        "guardian_phone_number", phoneNumberController.text);
+                    await prefs.setString("name", userNameController.text);
+                    Navigator.push(
+                      context,
+                      Transition(
+                        child: const MainPage(),
+                        transitionEffect: TransitionEffect.RIGHT_TO_LEFT,
+                      ),
+                    );
+                  }
+                });
               },
               child: Container(
                 width: 328,
