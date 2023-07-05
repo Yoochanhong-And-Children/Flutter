@@ -146,6 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 20.sp,
+                          fontFamily: 'ExtraBold',
                         ),
                       ),
                     ),
