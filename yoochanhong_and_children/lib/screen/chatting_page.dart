@@ -10,7 +10,8 @@ class ChattingPage extends StatefulWidget {
 }
 
 class _ChattingPageState extends State<ChattingPage> {
-  bool _isTyping = false, itMe = false;
+  bool isTyping = false, itMe = false;
+  bool isWritingButtonTouch = false;
 
   late TextEditingController textEditingController;
   late ScrollController scrollController;
@@ -100,43 +101,85 @@ class _ChattingPageState extends State<ChattingPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 25.0.w),
-                  child: Container(
-                    width: 84.0.w,
-                    height: 52.0.h,
-                    decoration: BoxDecoration(
-                      color: Color(0xffB0B0B0),
-                      borderRadius: BorderRadius.circular(100),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "글쓰기",
-                        style:
-                            TextStyle(color: Colors.white, fontSize: 20.0.sp),
+                !isWritingButtonTouch
+                    ? GestureDetector(
+                        onTap: () => setState(() {
+                          isWritingButtonTouch = true;
+                        }),
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 25.0.w),
+                          child: Container(
+                            width: 84.0.w,
+                            height: 52.0.h,
+                            decoration: BoxDecoration(
+                              color: Color(0xffB0B0B0),
+                              borderRadius: BorderRadius.circular(100),
+                            ),
+                            child: Center(
+                              child: Text(
+                                "글쓰기",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20.0.sp),
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    : Padding(
+                        padding: EdgeInsets.only(left: 25.0.w),
+                        child: Container(
+                          width: 243.0.w,
+                          height: 60.0.h,
+                          decoration: BoxDecoration(
+                            color: const Color(0xffCCCCCC),
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                          child: TextField(
+                            controller: textEditingController,
+                            cursorColor: Colors.black,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                borderSide:
+                                    BorderSide(color: Color(0xffDBD7E0)),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(20)),
+                                borderSide:
+                                    BorderSide(color: Color(0xffDBD7E0)),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                ),
-                Image.asset(
-                  "assets/images/mic_fill.png",
-                  width: 57.0.w,
-                  height: 52.0.h,
-                ),
-                Padding(
-                  padding: EdgeInsets.only(right: 25.0.w),
-                  child: Container(
-                    width: 84.0.w,
-                    height: 52.0.h,
-                    decoration: BoxDecoration(
-                      color: Color(0xffB0B0B0),
-                      borderRadius: BorderRadius.circular(100),
-                    ),
-                    child: Center(
-                      child: Text(
-                        "보내기",
-                        style:
-                            TextStyle(color: Colors.white, fontSize: 20.0.sp),
+                !isWritingButtonTouch
+                    ? Image.asset(
+                        "assets/images/mic_fill.png",
+                        width: 57.0.w,
+                        height: 52.0.h,
+                      )
+                    : const SizedBox.shrink(),
+                GestureDetector(
+                  onTap: () => setState(() {
+                    isWritingButtonTouch = false;
+                  }),
+                  child: Padding(
+                    padding: EdgeInsets.only(right: 25.0.w),
+                    child: Container(
+                      width: 84.0.w,
+                      height: 52.0.h,
+                      decoration: BoxDecoration(
+                        color: Color(0xffB0B0B0),
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "보내기",
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 20.0.sp),
+                        ),
                       ),
                     ),
                   ),
