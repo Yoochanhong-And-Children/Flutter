@@ -80,12 +80,13 @@ class _ChattingPageState extends State<ChattingPage> {
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
                           children: [
+                            SizedBox(width: 10.0.w),
                             Image.asset(
                               "assets/images/person.png",
                               width: 30.33.w,
                               height: 39.0.h,
                             ),
-                            SizedBox(width: 10.0.w),
+                            SizedBox(width: 20.0.w),
                             Text(
                               list[index],
                               style: TextStyle(
