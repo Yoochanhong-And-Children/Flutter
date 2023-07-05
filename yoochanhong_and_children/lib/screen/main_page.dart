@@ -105,15 +105,17 @@ class _MainPageState extends State<MainPage> {
                           borderRadius: BorderRadius.circular(20.0)),
                       child: Center(
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Image.asset(
-                              "assets/images/chat.png",
-                              width: 60,
-                              height: 55,
-                            ),
                             Column(
                               children: [
+                                SizedBox(height: 40.0.h),
+                                Image.asset(
+                                  "assets/images/chat.png",
+                                  width: 49,
+                                  height: 63,
+                                ),
+                                SizedBox(height: 30.0.h),
                                 GestureDetector(
                                   onTap: () {},
                                   child: Container(
@@ -134,31 +136,32 @@ class _MainPageState extends State<MainPage> {
                                     ),
                                   ),
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      width: 8.05,
-                                      height: 8.0,
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xff5C5C5C),
-                                        borderRadius:
-                                            BorderRadius.circular(50.0),
-                                      ),
-                                    ),
-                                    SizedBox(width: 5.0.w),
-                                    Container(
-                                      width: 8.05,
-                                      height: 8.0,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xffFFFFFF),
-                                        borderRadius:
-                                            BorderRadius.circular(50.0),
-                                      ),
-                                    ),
-                                  ],
-                                ),
                               ],
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 10.0.h),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: 8.05,
+                                    height: 8.0,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xff5C5C5C),
+                                      borderRadius: BorderRadius.circular(50.0),
+                                    ),
+                                  ),
+                                  SizedBox(width: 5.0.w),
+                                  Container(
+                                    width: 8.05,
+                                    height: 8.0,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xffFFFFFF),
+                                      borderRadius: BorderRadius.circular(50.0),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -172,15 +175,17 @@ class _MainPageState extends State<MainPage> {
                           borderRadius: BorderRadius.circular(20.0)),
                       child: Center(
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Image.asset(
-                              "assets/images/person.png",
-                              width: 49,
-                              height: 63,
-                            ),
                             Column(
                               children: [
+                                SizedBox(height: 40.0.h),
+                                Image.asset(
+                                  "assets/images/person.png",
+                                  width: 49,
+                                  height: 63,
+                                ),
+                                SizedBox(height: 30.0.h),
                                 GestureDetector(
                                   onTap: () {},
                                   child: Container(
@@ -201,31 +206,32 @@ class _MainPageState extends State<MainPage> {
                                     ),
                                   ),
                                 ),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Container(
-                                      width: 8.05,
-                                      height: 8.0,
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xffFFFFFF),
-                                        borderRadius:
-                                            BorderRadius.circular(50.0),
-                                      ),
-                                    ),
-                                    SizedBox(width: 5.0.w),
-                                    Container(
-                                      width: 8.05,
-                                      height: 8.0,
-                                      decoration: BoxDecoration(
-                                        color: const Color(0xff5C5C5C),
-                                        borderRadius:
-                                            BorderRadius.circular(50.0),
-                                      ),
-                                    ),
-                                  ],
-                                ),
                               ],
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 10.0.h),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Container(
+                                    width: 8.05,
+                                    height: 8.0,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xffFFFFFF),
+                                      borderRadius: BorderRadius.circular(50.0),
+                                    ),
+                                  ),
+                                  SizedBox(width: 5.0.w),
+                                  Container(
+                                    width: 8.05,
+                                    height: 8.0,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xff5C5C5C),
+                                      borderRadius: BorderRadius.circular(50.0),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
