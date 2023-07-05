@@ -215,7 +215,90 @@ class _MyPageState extends State<MyPage> {
             SizedBox(height: 15.0.h),
             GestureDetector(
               onTap: () {
+                showDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (BuildContext context) => SizedBox(
+                    child: AlertDialog(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.r),
+                      ),
+                      content: SizedBox(
+                        width: 370.0.w,
+                        height: 80.0.h,
+                        child: Center(
+                          child: Container(
+                            padding: EdgeInsets.only(top: 10.0.h),
+                            child: Text(
+                              '변경하시겠습니까?',
+                              style: TextStyle(
+                                fontSize: 24.0.sp,
+                                fontWeight: FontWeight.w600,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      actions: <Widget>[
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 10.0.h),
+                              child: GestureDetector(
+                                onTap: () {
 
+                                },
+                                child: Container(
+                                  width: 119.0.w,
+                                  height: 55.0.h,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20.r),
+                                    color: Color(0xFFC3C3C3),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      '되돌리기',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20.sp,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(bottom: 10.0.h),
+                              child: GestureDetector(
+                                onTap: () {
+
+                                },
+                                child: Container(
+                                  width: 119.0.w,
+                                  height: 55.0.h,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20.r),
+                                    color: Color(0xFF3F853E),
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      '변경하기',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 20.sp,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                );
               },
               child: Container(
                 width: 74.0.w,
