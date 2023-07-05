@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:yoochanhong_and_children/common/common.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_to_text/speech_to_text.dart';
+import 'package:yoochanhong_and_children/model/gpt_response.dart';
+import 'package:yoochanhong_and_children/service/get_gpt_comment.dart';
 
 class ChattingPage extends StatefulWidget {
   const ChattingPage({super.key});
@@ -15,7 +17,7 @@ class _ChattingPageState extends State<ChattingPage> {
   bool isWritingButtonTouch = false, isListening = false;
   String text = '';
 
-  List<String> list = List.empty(growable: true);
+  List<ChattingList> list = List.empty(growable: true);
 
   SpeechToText speechToText = SpeechToText();
   late TextEditingController textEditingController;
@@ -72,25 +74,32 @@ class _ChattingPageState extends State<ChattingPage> {
                   itemBuilder: (context, index) {
                     return Container(
                       width: MediaQuery.of(context).size.width,
-                      height: 70.0.h,
-                      decoration: const BoxDecoration(
-                        color: Color(0xffE7E7E7),
+                      height: list[index].comment!.length * 1 + 60.0.h,
+                      decoration: BoxDecoration(
+                        color: list[index].isMyMessage!
+                            ? Color(0xffE7E7E7)
+                            : Color(0xff90CF86),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
                           children: [
                             SizedBox(width: 10.0.w),
-                            Image.asset(
-                              "assets/images/person.png",
-                              width: 30.33.w,
-                              height: 39.0.h,
-                            ),
+                            list[index].isMyMessage!
+                                ? Image.asset(
+                                    "assets/images/person.png",
+                                    width: 30.33.w,
+                                    height: 39.0.h,
+                                  )
+                                : const SizedBox.shrink(),
                             SizedBox(width: 20.0.w),
-                            Text(
-                              list[index],
-                              style: TextStyle(
-                                  fontSize: 20.0.sp, color: Colors.black),
+                            Expanded(
+                              child: Text(
+                                list[index].comment.toString(),
+                                style: TextStyle(
+                                    fontSize: 20.0.sp, color: Colors.black),
+                                softWrap: true,
+                              ),
                             ),
                           ],
                         ),
@@ -186,7 +195,9 @@ class _ChattingPageState extends State<ChattingPage> {
                             });
                             speechToText.stop();
                             setState(() {
-                              list.add(text);
+                              ChattingList cl = ChattingList(
+                                  comment: text, isMyMessage: true);
+                              list.add(cl);
                             });
                           }
                         },
@@ -198,11 +209,27 @@ class _ChattingPageState extends State<ChattingPage> {
                       )
                     : const SizedBox.shrink(),
                 GestureDetector(
-                  onTap: () => setState(() {
-                    isWritingButtonTouch = false;
-                    list.add(textEditingController.text);
-                    textEditingController.clear();
-                  }),
+                  onTap: () async {
+                    String text = '';
+                    setState(() {
+                      isWritingButtonTouch = false;
+                      ChattingList cl = ChattingList(
+                          comment: textEditingController.text,
+                          isMyMessage: true);
+                      list.add(cl);
+                      text = textEditingController.text;
+                      textEditingController.clear();
+                    });
+                    gptResponse(text).then((value) {
+                      ChattingList cl = ChattingList(
+                          isMyMessage: false,
+                          comment:
+                              value.choices![0].message!.content.toString());
+                      setState(() {
+                        list.add(cl);
+                      });
+                    });
+                  },
                   child: Padding(
                     padding: EdgeInsets.only(right: 25.0.w),
                     child: Container(
@@ -238,71 +265,4 @@ class ChattingList {
   bool? isMyMessage;
 
   ChattingList({this.comment, this.isMyMessage});
-}
-
-class GPTResponse {
-  List<Choices>? choices;
-
-  GPTResponse({this.choices});
-
-  GPTResponse.fromJson(Map<String, dynamic> json) {
-    if (json['choices'] != null) {
-      choices = <Choices>[];
-      json['choices'].forEach((v) {
-        choices!.add(Choices.fromJson(v));
-      });
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (choices != null) {
-      data['choices'] = choices!.map((v) => v.toJson()).toList();
-    }
-    return data;
-  }
-}
-
-class Choices {
-  int? index;
-  Message? message;
-  String? finishReason;
-
-  Choices({this.index, this.message, this.finishReason});
-
-  Choices.fromJson(Map<String, dynamic> json) {
-    index = json['index'];
-    message =
-        json['message'] != null ? Message.fromJson(json['message']) : null;
-    finishReason = json['finish_reason'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['index'] = index;
-    if (message != null) {
-      data['message'] = message!.toJson();
-    }
-    data['finish_reason'] = finishReason;
-    return data;
-  }
-}
-
-class Message {
-  String? role;
-  String? content;
-
-  Message({this.role, this.content});
-
-  Message.fromJson(Map<String, dynamic> json) {
-    role = json['role'];
-    content = json['content'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['role'] = role;
-    data['content'] = content;
-    return data;
-  }
 }
