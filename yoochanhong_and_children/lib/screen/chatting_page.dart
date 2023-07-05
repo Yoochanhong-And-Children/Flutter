@@ -13,6 +13,8 @@ class _ChattingPageState extends State<ChattingPage> {
   bool isTyping = false, itMe = false;
   bool isWritingButtonTouch = false;
 
+  List<ChattingModel> list = List.empty(growable: true);
+
   late TextEditingController textEditingController;
   late ScrollController scrollController;
   late FocusNode focusNode;
@@ -64,29 +66,35 @@ class _ChattingPageState extends State<ChattingPage> {
                 width: MediaQuery.of(context).size.width - 40,
                 height: MediaQuery.of(context).size.height,
                 child: ListView.builder(
-                  itemCount: 1,
+                  itemCount: list.length,
                   itemBuilder: (context, index) {
                     return Column(
                       children: [
-                        Directionality(
-                          textDirection:
-                              itMe ? TextDirection.ltr : TextDirection.rtl,
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 279.0.w,
-                                height: 59.0.h,
-                                decoration: const BoxDecoration(
-                                  color: Color(0xff6EB96C),
-                                  borderRadius: BorderRadius.only(
-                                    topLeft: Radius.circular(25.0),
-                                    topRight: Radius.circular(25.0),
-                                    bottomLeft: Radius.circular(25.0),
-                                  ),
+                        Row(
+                          textDirection: list[index].isMyMessage!
+                              ? TextDirection.rtl
+                              : TextDirection.ltr,
+                          children: [
+                            Container(
+                              width: (list[index].comment.length * 25).w,
+                              height: 59.0.h,
+                              decoration: const BoxDecoration(
+                                color: Color(0xff6EB96C),
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(25.0),
+                                  topRight: Radius.circular(25.0),
+                                  bottomLeft: Radius.circular(25.0),
                                 ),
                               ),
-                            ],
-                          ),
+                              child: Center(
+                                child: Text(
+                                  list[index].comment.toString(),
+                                  style: TextStyle(
+                                      fontSize: 20.0.sp, color: Colors.white),
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                         const SizedBox(height: 20.0),
                       ],
@@ -167,6 +175,10 @@ class _ChattingPageState extends State<ChattingPage> {
                 GestureDetector(
                   onTap: () => setState(() {
                     isWritingButtonTouch = false;
+                    list.add(ChattingModel(
+                        comment: textEditingController.text,
+                        gptResponse: null,
+                        isMyMessage: true));
                     textEditingController.clear();
                   }),
                   child: Padding(
@@ -196,5 +208,81 @@ class _ChattingPageState extends State<ChattingPage> {
         ],
       ),
     );
+  }
+}
+
+class ChattingModel {
+  GPTResponse? gptResponse;
+  bool? isMyMessage;
+  String comment;
+  DateTime? dateTime;
+
+  ChattingModel({this.gptResponse, this.isMyMessage, required this.comment});
+}
+
+class GPTResponse {
+  List<Choices>? choices;
+
+  GPTResponse({this.choices});
+
+  GPTResponse.fromJson(Map<String, dynamic> json) {
+    if (json['choices'] != null) {
+      choices = <Choices>[];
+      json['choices'].forEach((v) {
+        choices!.add(Choices.fromJson(v));
+      });
+    }
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    if (choices != null) {
+      data['choices'] = choices!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class Choices {
+  int? index;
+  Message? message;
+  String? finishReason;
+
+  Choices({this.index, this.message, this.finishReason});
+
+  Choices.fromJson(Map<String, dynamic> json) {
+    index = json['index'];
+    message =
+        json['message'] != null ? Message.fromJson(json['message']) : null;
+    finishReason = json['finish_reason'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['index'] = index;
+    if (message != null) {
+      data['message'] = message!.toJson();
+    }
+    data['finish_reason'] = finishReason;
+    return data;
+  }
+}
+
+class Message {
+  String? role;
+  String? content;
+
+  Message({this.role, this.content});
+
+  Message.fromJson(Map<String, dynamic> json) {
+    role = json['role'];
+    content = json['content'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['role'] = role;
+    data['content'] = content;
+    return data;
   }
 }
