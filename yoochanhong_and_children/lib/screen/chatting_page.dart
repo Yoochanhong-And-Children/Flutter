@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:yoochanhong_and_children/common/common.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:speech_to_text/speech_to_text.dart';
-import 'package:yoochanhong_and_children/model/gpt_response.dart';
 import 'package:yoochanhong_and_children/service/get_gpt_comment.dart';
 
 class ChattingPage extends StatefulWidget {
@@ -49,14 +48,18 @@ class _ChattingPageState extends State<ChattingPage> {
         elevation: 0.0,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios_rounded,
             color: Colors.black,
           ),
         ),
         title: Text(
           "채팅",
-          style: TextStyle(fontSize: 28.0.sp, color: Colors.black),
+          style: TextStyle(
+            fontSize: 24.0.sp,
+            fontFamily: 'ExtraBold',
+            color: Colors.black,
+          ),
         ),
         centerTitle: true,
       ),
@@ -77,8 +80,8 @@ class _ChattingPageState extends State<ChattingPage> {
                       height: list[index].comment!.length * 1 + 60.0.h,
                       decoration: BoxDecoration(
                         color: list[index].isMyMessage!
-                            ? Color(0xffE7E7E7)
-                            : Color(0xff90CF86),
+                            ? const Color(0xffE7E7E7)
+                            : const Color(0xff90CF86),
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
@@ -97,7 +100,10 @@ class _ChattingPageState extends State<ChattingPage> {
                               child: Text(
                                 list[index].comment.toString(),
                                 style: TextStyle(
-                                    fontSize: 20.0.sp, color: Colors.black),
+                                  fontSize: 20.0.sp,
+                                  fontFamily: 'Bold',
+                                  color: Colors.black,
+                                ),
                                 softWrap: true,
                               ),
                             ),
@@ -133,7 +139,10 @@ class _ChattingPageState extends State<ChattingPage> {
                               child: Text(
                                 "글쓰기",
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 20.0.sp),
+                                  color: Colors.white,
+                                  fontSize: 20.0.sp,
+                                  fontFamily: 'ExtraBold'
+                                ),
                               ),
                             ),
                           ),
@@ -158,17 +167,24 @@ class _ChattingPageState extends State<ChattingPage> {
                             border: Border.all(width: 1, color: Colors.black),
                           ),
                           child: Padding(
-                            padding: EdgeInsets.only(left: 15.0.w, top: 5.0.h),
-                            child: TextField(
-                              controller: textEditingController,
-                              cursorColor: Colors.black,
-                              onChanged: (value) => setState(() {}),
-                              autofocus: true,
-                              maxLines: null,
-                              keyboardType: TextInputType.text,
-                              decoration: const InputDecoration(
-                                counterText: '',
-                                border: InputBorder.none,
+                            padding: EdgeInsets.only(left: 15.0.w),
+                            child: Center(
+                              child: TextField(
+                                controller: textEditingController,
+                                cursorColor: Colors.black,
+                                onChanged: (value) => setState(() {}),
+                                autofocus: true,
+                                maxLines: null,
+                                keyboardType: TextInputType.text,
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20.sp,
+                                  fontFamily: 'Bold',
+                                ),
+                                decoration: const InputDecoration(
+                                  counterText: '',
+                                  border: InputBorder.none,
+                                ),
                               ),
                             ),
                           ),
@@ -237,15 +253,18 @@ class _ChattingPageState extends State<ChattingPage> {
                       height: 52.0.h,
                       decoration: BoxDecoration(
                         color: textEditingController.text.isEmpty
-                            ? Color(0xffB0B0B0)
-                            : Color(0xff6EB96C),
+                            ? const Color(0xffB0B0B0)
+                            : const Color(0xff6EB96C),
                         borderRadius: BorderRadius.circular(100),
                       ),
                       child: Center(
                         child: Text(
                           "보내기",
-                          style:
-                              TextStyle(color: Colors.white, fontSize: 20.0.sp),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20.0.sp,
+                            fontFamily: 'ExtraBold',
+                          ),
                         ),
                       ),
                     ),
