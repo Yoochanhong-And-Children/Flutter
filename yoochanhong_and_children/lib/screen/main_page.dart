@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:transition/transition.dart';
 import 'package:yoochanhong_and_children/common/common.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:yoochanhong_and_children/model/meal_whether.dart';
 import 'package:yoochanhong_and_children/screen/chatting_page.dart';
 import 'package:yoochanhong_and_children/screen/my_page.dart';
 
@@ -14,6 +15,8 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   final PageController pageController = PageController(initialPage: 0);
+  bool clickYes = false;
+  bool clickNo = false;
 
   @override
   Widget build(BuildContext context) {
@@ -83,13 +86,18 @@ class _MainPageState extends State<MainPage> {
                         children: [
                           GestureDetector(
                             onTap: () {
-
+                              setState(() {
+                                if (clickYes == false) {
+                                  clickYes = true;
+                                  clickNo = false;
+                                }
+                              });
                             },
                             child: Container(
                               width: 181.0.w,
                               height: 90.0.h,
                               decoration: BoxDecoration(
-                                color: Color(0xFF5A9D59),
+                                color: clickYes == true ? Color(0xFF5A9D59) : Color(0xFFB0B0B0),
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(20.r),
                                   bottomLeft: Radius.circular(20.r),
@@ -110,13 +118,18 @@ class _MainPageState extends State<MainPage> {
                           SizedBox(width: 8.0.w),
                           GestureDetector(
                             onTap: () {
-
+                              setState(() {
+                                if (clickNo == false) {
+                                  clickNo = true;
+                                  clickYes = false;
+                                }
+                              });
                             },
                             child: Container(
                               width: 181.0.w,
                               height: 90.0.h,
                               decoration: BoxDecoration(
-                                color: Color(0xFF5A9D59),
+                                color: clickNo == true ? Color(0xFF5A9D59) : Color(0xFFB0B0B0),
                                 borderRadius: BorderRadius.only(
                                   topRight: Radius.circular(20.r),
                                   bottomRight: Radius.circular(20.r),
