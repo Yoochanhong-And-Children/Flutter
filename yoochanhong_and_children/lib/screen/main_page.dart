@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:yoochanhong_and_children/common/common.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({super.key});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  final PageController pageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
@@ -70,37 +77,90 @@ class MainPage extends StatelessWidget {
                 color: const Color(0xffD7EBD7),
                 borderRadius: BorderRadius.circular(20.0),
               ),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Image.asset(
-                      "assets/images/chat.png",
-                      width: 60,
-                      height: 55,
-                    ),
-                    GestureDetector(
-                      onTap: () {},
-                      child: Container(
-                        width: 190,
-                        height: 62,
-                        decoration: BoxDecoration(
-                          color: const Color(0xff6BB86A),
-                          borderRadius: BorderRadius.circular(20.0),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "채팅하러 가기",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24.0,
+              child: PageView(
+                pageSnapping: true,
+                controller: pageController,
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Container(
+                    width: 320.0,
+                    height: 260.0,
+                    decoration: BoxDecoration(
+                        color: const Color(0xffD7EBD7),
+                        borderRadius: BorderRadius.circular(20.0)),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Image.asset(
+                            "assets/images/chat.png",
+                            width: 60,
+                            height: 55,
+                          ),
+                          GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              width: 190,
+                              height: 62,
+                              decoration: BoxDecoration(
+                                color: const Color(0xff6BB86A),
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "채팅하러 가기",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24.0,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                        ],
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                  Container(
+                    width: 320.0,
+                    height: 260.0,
+                    decoration: BoxDecoration(
+                        color: const Color(0xffD7EBD7),
+                        borderRadius: BorderRadius.circular(20.0)),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Image.asset(
+                            "assets/images/chat.png",
+                            width: 60,
+                            height: 55,
+                          ),
+                          GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              width: 190,
+                              height: 62,
+                              decoration: BoxDecoration(
+                                color: const Color(0xff6BB86A),
+                                borderRadius: BorderRadius.circular(20.0),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  "채팅하러 가기",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 24.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
