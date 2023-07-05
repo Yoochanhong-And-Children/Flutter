@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:transition/transition.dart';
 import 'package:yoochanhong_and_children/common/common.dart';
 import 'package:yoochanhong_and_children/component/text_field.dart';
 import 'package:yoochanhong_and_children/screen/main_page.dart';
@@ -40,12 +41,24 @@ class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
+        centerTitle: true,
         title: Text(
           "보호자 등록",
-          style: TextStyle(color: Colors.black, fontSize: 24),
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 24.sp,
+            fontFamily: 'ExtraBold'
+          ),
         ),
         leading: IconButton(
-            onPressed: null, icon: Icon(Icons.arrow_back_ios_new_sharp)),
+          onPressed: (){
+            Navigator.of(context).pop();
+          },
+          icon: Icon(
+            Icons.arrow_back_ios_new_rounded,
+            color: Colors.black,
+          ),
+        ),
       ),
       body: Center(
         child: Column(
@@ -59,11 +72,11 @@ class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
                   controller: userNameController,
                   helperText: "이름",
                   hintText: "이름을 입력해주세요.",
-                  fontSize: 14,
+                  fontSize: 20,
                   maxLength: 20,
                   autofocus: true,
                 ),
-                SizedBox(height: 50.0.h),
+                SizedBox(height: 55.0.h),
                 CustomTextField(
                   width: 328,
                   height: 60,
@@ -74,7 +87,7 @@ class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
                   maxLength: 20,
                   autofocus: false,
                 ),
-                SizedBox(height: 50.0.h),
+                SizedBox(height: 55.0.h),
                 CustomTextField(
                   width: 328,
                   height: 60,
@@ -88,10 +101,15 @@ class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
               ],
             ),
             GestureDetector(
-              onTap: () => Navigator.pushAndRemoveUntil(
+              onTap: () {
+                Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const MainPage()),
-                  (route) => false),
+                  Transition(
+                    child: const MainPage(),
+                    transitionEffect: TransitionEffect.RIGHT_TO_LEFT,
+                  )
+                );
+              },
               child: Container(
                 width: 328,
                 height: 60,
@@ -105,6 +123,7 @@ class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 24.0.sp,
+                      fontFamily: 'ExtraBold',
                     ),
                   ),
                 ),
