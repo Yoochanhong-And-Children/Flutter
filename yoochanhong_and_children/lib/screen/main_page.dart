@@ -112,25 +112,53 @@ class _MainPageState extends State<MainPage> {
                               width: 60,
                               height: 55,
                             ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Container(
-                                width: 190,
-                                height: 62,
-                                decoration: BoxDecoration(
-                                  color: const Color(0xff6BB86A),
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    "채팅하러 가기",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 24.0.sp,
+                            Column(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    width: 190,
+                                    height: 62,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xff6BB86A),
+                                      borderRadius: BorderRadius.circular(20.0),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        "채팅하러 가기",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 24.0.sp,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: 8.05,
+                                      height: 8.0,
+                                      decoration: BoxDecoration(
+                                        color: const Color(0xff5C5C5C),
+                                        borderRadius:
+                                            BorderRadius.circular(50.0),
+                                      ),
+                                    ),
+                                    SizedBox(width: 5.0.w),
+                                    Container(
+                                      width: 8.05,
+                                      height: 8.0,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xffFFFFFF),
+                                        borderRadius:
+                                            BorderRadius.circular(50.0),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -151,25 +179,53 @@ class _MainPageState extends State<MainPage> {
                               width: 49,
                               height: 63,
                             ),
-                            GestureDetector(
-                              onTap: () {},
-                              child: Container(
-                                width: 190,
-                                height: 62,
-                                decoration: BoxDecoration(
-                                  color: const Color(0xff6BB86A),
-                                  borderRadius: BorderRadius.circular(20.0),
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    "내 정보 보러가기",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 24.0.sp,
+                            Column(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: Container(
+                                    width: 190,
+                                    height: 62,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0xff6BB86A),
+                                      borderRadius: BorderRadius.circular(20.0),
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        "내 정보 보러가기",
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 24.0.sp,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: 8.05,
+                                      height: 8.0,
+                                      decoration: BoxDecoration(
+                                        color: const Color(0xffFFFFFF),
+                                        borderRadius:
+                                            BorderRadius.circular(50.0),
+                                      ),
+                                    ),
+                                    SizedBox(width: 5.0.w),
+                                    Container(
+                                      width: 8.05,
+                                      height: 8.0,
+                                      decoration: BoxDecoration(
+                                        color: const Color(0xff5C5C5C),
+                                        borderRadius:
+                                            BorderRadius.circular(50.0),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ],
                         ),
