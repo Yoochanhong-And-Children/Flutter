@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:yoochanhong_and_children/common/common.dart';
 import 'package:yoochanhong_and_children/component/text_field.dart';
+import 'package:yoochanhong_and_children/screen/main_page.dart';
 
 class ProtectorRegistrationPage extends StatefulWidget {
   const ProtectorRegistrationPage({Key? key}) : super(key: key);
@@ -86,19 +87,25 @@ class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
                 ),
               ],
             ),
-            Container(
-              width: 328,
-              height: 60,
-              decoration: BoxDecoration(
-                color: const Color(0xff5A9D59),
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-              child: Center(
-                child: Text(
-                  "입력 완료",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24.0.sp,
+            GestureDetector(
+              onTap: () => Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MainPage()),
+                  (route) => false),
+              child: Container(
+                width: 328,
+                height: 60,
+                decoration: BoxDecoration(
+                  color: const Color(0xff5A9D59),
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+                child: Center(
+                  child: Text(
+                    "입력 완료",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24.0.sp,
+                    ),
                   ),
                 ),
               ),
