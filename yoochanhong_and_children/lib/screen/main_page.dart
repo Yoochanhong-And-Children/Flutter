@@ -51,80 +51,95 @@ class _MainPageState extends State<MainPage> {
                           ),
                         ],
                       ),
-                      RichText(
-                        text: TextSpan(
-                          children: [
-                            TextSpan(
-                              text: "식사",
-                              style: TextStyle(
+                      Row(
+                        children: [
+                          RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: "식사",
+                                  style: TextStyle(
+                                    color: Color(0xFF5A9D59),
+                                    fontSize: 32.sp,
+                                    fontFamily: 'ExtraBold'
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: "는 하셨나요?",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 32.sp,
+                                      fontFamily: 'ExtraBold'
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(height: 35.0.h),
+                      Row(
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+
+                            },
+                            child: Container(
+                              width: 181.0.w,
+                              height: 90.0.h,
+                              decoration: BoxDecoration(
                                 color: Color(0xFF5A9D59),
-                                fontSize: 32.sp,
-                                fontFamily: 'ExtraBold',
+                                borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20.r),
+                                  bottomLeft: Radius.circular(20.r),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  '예',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 40.sp,
+                                    fontFamily: 'Regular',
+                                  ),
+                                ),
                               ),
                             ),
-                            TextSpan(
-                              text: "는 하셨나요?",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 32.sp,
-                                fontFamily: 'ExtraBold',
+                          ),
+                          SizedBox(width: 8.0.w),
+                          GestureDetector(
+                            onTap: () {
+
+                            },
+                            child: Container(
+                              width: 181.0.w,
+                              height: 90.0.h,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF5A9D59),
+                                borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(20.r),
+                                  bottomRight: Radius.circular(20.r),
+                                ),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  '아니오',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 40.sp,
+                                    fontFamily: 'Regular',
+                                  ),
+                                ),
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ],
               ),
-              SizedBox(height: 72.0.h),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "보호자 정보",
-                    style: TextStyle(
-                      fontSize: 22.sp,
-                      fontFamily: 'ExtraBold',
-                      color: Color(0xff5A9D59),
-                    ),
-                  ),
-                  SizedBox(height: 10.0.h),
-                  Container(
-                    width: 370.0.w,
-                    height: 90.0.h,
-                    decoration: BoxDecoration(
-                      color: const Color(0xff5A9D59),
-                      borderRadius: BorderRadius.circular(20.r),
-                    ),
-                    child: Center(
-                      child: Row(
-                        children: [
-                          SizedBox(width: 20.0.w),
-                          Text(
-                            "양채원",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20.0.sp,
-                              fontFamily: 'ExtraBold',
-                            ),
-                          ),
-                          SizedBox(width: 115.0.w),
-                          Text(
-                            "010-5845-4856",
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18.0.sp,
-                              fontFamily: 'Heavy',
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 90.0.h),
+              SizedBox(height: 160.0.h),
               Container(
                 width: 320.0.w,
                 height: 260.0.h,
