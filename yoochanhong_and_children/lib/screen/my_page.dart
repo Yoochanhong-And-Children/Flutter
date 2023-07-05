@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:yoochanhong_and_children/common/common.dart';
@@ -17,6 +18,8 @@ class _MyPageState extends State<MyPage> {
   FocusNode protectorNum1FocusNode = FocusNode();
   FocusNode protectorNum2FocusNode = FocusNode();
   FocusNode protectorNum3FocusNode = FocusNode();
+
+  bool alarmSetting = false;
 
   @override
   void initState() {
@@ -106,7 +109,39 @@ class _MyPageState extends State<MyPage> {
                 ),
               ),
             ),
-            SizedBox(height: 196.0.h),
+            SizedBox(height: 60.0.h),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Padding(
+                padding: EdgeInsets.only(left: 30.0.w),
+                child: SizedBox(
+                  width: 250.0.w,
+                  height: 44.0.h,
+                  child: Row(
+                    children: [
+                      Text(
+                        '식사 시간 알림',
+                        style: TextStyle(
+                          color: Color(0xFF5A9D59),
+                          fontSize: 22.sp,
+                          fontFamily: 'ExtraBold',
+                        ),
+                      ),
+                      SizedBox(width: 30.0.w),
+                      CupertinoSwitch(
+                        value: alarmSetting,
+                        onChanged: (bool value) {
+                          setState(() {
+                            alarmSetting = value;
+                          });
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(height: 86.0.h),
             Row(
               children: [
                 Padding(
