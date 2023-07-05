@@ -149,6 +149,7 @@ class _ChattingPageState extends State<ChattingPage> {
                             autofocus: true,
                             keyboardType: TextInputType.text,
                             decoration: const InputDecoration(
+                              counterText: '',
                               border: OutlineInputBorder(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(20)),
