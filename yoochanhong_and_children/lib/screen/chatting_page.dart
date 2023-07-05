@@ -63,7 +63,7 @@ class _ChattingPageState extends State<ChattingPage> {
                 width: MediaQuery.of(context).size.width - 40,
                 height: MediaQuery.of(context).size.height,
                 child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: 1,
                   itemBuilder: (context, index) {
                     return Column(
                       children: [
@@ -98,14 +98,49 @@ class _ChattingPageState extends State<ChattingPage> {
           Expanded(
             flex: 2,
             child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  width: 100,
-                  height: 100,
-                  color: Colors.black,
+                Padding(
+                  padding: EdgeInsets.only(left: 25.0.w),
+                  child: Container(
+                    width: 84.0.w,
+                    height: 52.0.h,
+                    decoration: BoxDecoration(
+                      color: Color(0xffB0B0B0),
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "글쓰기",
+                        style:
+                            TextStyle(color: Colors.white, fontSize: 20.0.sp),
+                      ),
+                    ),
+                  ),
                 ),
-                Container(),
-                Container(),
+                Image.asset(
+                  "assets/images/mic_fill.png",
+                  width: 57.0.w,
+                  height: 52.0.h,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(right: 25.0.w),
+                  child: Container(
+                    width: 84.0.w,
+                    height: 52.0.h,
+                    decoration: BoxDecoration(
+                      color: Color(0xffB0B0B0),
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Center(
+                      child: Text(
+                        "보내기",
+                        style:
+                            TextStyle(color: Colors.white, fontSize: 20.0.sp),
+                      ),
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
