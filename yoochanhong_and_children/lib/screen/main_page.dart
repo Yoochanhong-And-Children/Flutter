@@ -132,9 +132,9 @@ class _MainPageState extends State<MainPage> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Image.asset(
-                            "assets/images/chat.png",
-                            width: 60,
-                            height: 55,
+                            "assets/images/person.png",
+                            width: 49,
+                            height: 63,
                           ),
                           GestureDetector(
                             onTap: () {},
@@ -147,7 +147,7 @@ class _MainPageState extends State<MainPage> {
                               ),
                               child: Center(
                                 child: Text(
-                                  "채팅하러 가기",
+                                  "내 정보 보러가기",
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 24.0,
