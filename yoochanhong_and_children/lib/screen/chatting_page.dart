@@ -13,7 +13,7 @@ class _ChattingPageState extends State<ChattingPage> {
   bool isTyping = false, itMe = false;
   bool isWritingButtonTouch = false;
 
-  List<ChattingModel> list = List.empty(growable: true);
+  List<String> list = List.empty(growable: true);
 
   late TextEditingController textEditingController;
   late ScrollController scrollController;
@@ -71,12 +71,10 @@ class _ChattingPageState extends State<ChattingPage> {
                     return Column(
                       children: [
                         Row(
-                          textDirection: list[index].isMyMessage!
-                              ? TextDirection.rtl
-                              : TextDirection.ltr,
+                          textDirection: TextDirection.ltr,
                           children: [
                             Container(
-                              width: (list[index].comment.length * 25).w,
+                              width: (list[index].length * 25).w,
                               height: 59.0.h,
                               decoration: const BoxDecoration(
                                 color: Color(0xff6EB96C),
@@ -88,7 +86,7 @@ class _ChattingPageState extends State<ChattingPage> {
                               ),
                               child: Center(
                                 child: Text(
-                                  list[index].comment.toString(),
+                                  list[index],
                                   style: TextStyle(
                                       fontSize: 20.0.sp, color: Colors.white),
                                 ),
@@ -176,10 +174,7 @@ class _ChattingPageState extends State<ChattingPage> {
                 GestureDetector(
                   onTap: () => setState(() {
                     isWritingButtonTouch = false;
-                    list.add(ChattingModel(
-                        comment: textEditingController.text,
-                        gptResponse: null,
-                        isMyMessage: true));
+                    list.add(textEditingController.text);
                     textEditingController.clear();
                   }),
                   child: Padding(
@@ -210,15 +205,6 @@ class _ChattingPageState extends State<ChattingPage> {
       ),
     );
   }
-}
-
-class ChattingModel {
-  GPTResponse? gptResponse;
-  bool? isMyMessage;
-  String comment;
-  DateTime? dateTime;
-
-  ChattingModel({this.gptResponse, this.isMyMessage, required this.comment});
 }
 
 class GPTResponse {
