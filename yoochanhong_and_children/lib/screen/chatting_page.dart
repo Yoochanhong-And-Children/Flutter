@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yoochanhong_and_children/common/common.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:speech_to_text/speech_to_text.dart';
 
 class ChattingPage extends StatefulWidget {
   const ChattingPage({super.key});
@@ -11,10 +12,12 @@ class ChattingPage extends StatefulWidget {
 
 class _ChattingPageState extends State<ChattingPage> {
   bool isTyping = false, itMe = false;
-  bool isWritingButtonTouch = false;
+  bool isWritingButtonTouch = false, isListening = false;
+  String text = '';
 
   List<String> list = List.empty(growable: true);
 
+  SpeechToText speechToText = SpeechToText();
   late TextEditingController textEditingController;
   late ScrollController scrollController;
   late FocusNode focusNode;
@@ -61,41 +64,36 @@ class _ChattingPageState extends State<ChattingPage> {
             flex: 7,
             child: ScrollConfiguration(
               behavior: const ScrollBehavior().copyWith(overscroll: false),
-              child: Container(
-                margin: const EdgeInsets.only(left: 20, right: 20),
-                width: MediaQuery.of(context).size.width - 40,
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
                 child: ListView.builder(
                   itemCount: list.length,
                   itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        Row(
-                          textDirection: TextDirection.ltr,
+                    return Container(
+                      width: MediaQuery.of(context).size.width,
+                      height: 70.0.h,
+                      decoration: const BoxDecoration(
+                        color: Color(0xffE7E7E7),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Row(
                           children: [
-                            Container(
-                              height: 10,
-                              width: MediaQuery.of(context).size.width - 40,
-                              decoration: const BoxDecoration(
-                                color: Color(0xff6EB96C),
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(25.0),
-                                  topRight: Radius.circular(25.0),
-                                  bottomLeft: Radius.circular(25.0),
-                                ),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  list[index],
-                                  style: TextStyle(
-                                      fontSize: 20.0.sp, color: Colors.white),
-                                ),
-                              ),
+                            Image.asset(
+                              "assets/images/person.png",
+                              width: 30.33.w,
+                              height: 39.0.h,
+                            ),
+                            SizedBox(width: 10.0.w),
+                            Text(
+                              list[index],
+                              style: TextStyle(
+                                  fontSize: 20.0.sp, color: Colors.black),
                             ),
                           ],
                         ),
-                        const SizedBox(height: 20.0),
-                      ],
+                      ),
                     );
                   },
                 ),
@@ -118,7 +116,7 @@ class _ChattingPageState extends State<ChattingPage> {
                             width: 84.0.w,
                             height: 52.0.h,
                             decoration: BoxDecoration(
-                              color: Color(0xffB0B0B0),
+                              color: const Color(0xffB0B0B0),
                               borderRadius: BorderRadius.circular(100),
                             ),
                             child: Center(
@@ -136,9 +134,13 @@ class _ChattingPageState extends State<ChattingPage> {
                         child: Container(
                           width: 243.0.w,
                           height: 60.0 >
-                                  textEditingController.text.length / 15 * 60
+                                  textEditingController.text.length /
+                                      MediaQuery.of(context).size.width *
+                                      100
                               ? 60.0.w
-                              : (textEditingController.text.length / 15) * 15 +
+                              : (textEditingController.text.length /
+                                          MediaQuery.of(context).size.width) *
+                                      100 +
                                   60.0.w,
                           decoration: BoxDecoration(
                             color: const Color(0xffCCCCCC),
@@ -163,10 +165,35 @@ class _ChattingPageState extends State<ChattingPage> {
                         ),
                       ),
                 !isWritingButtonTouch
-                    ? Image.asset(
-                        "assets/images/mic_fill.png",
-                        width: 57.0.w,
-                        height: 52.0.h,
+                    ? GestureDetector(
+                        onTap: () async {
+                          if (!isListening) {
+                            var able = await speechToText.initialize();
+                            if (able) {
+                              setState(() {
+                                isListening = true;
+                                speechToText.listen(onResult: (result) {
+                                  setState(() {
+                                    text = result.recognizedWords;
+                                  });
+                                });
+                              });
+                            }
+                          } else {
+                            setState(() {
+                              isListening = false;
+                            });
+                            speechToText.stop();
+                            setState(() {
+                              list.add(text);
+                            });
+                          }
+                        },
+                        child: Image.asset(
+                          "assets/images/mic_fill.png",
+                          width: 57.0.w,
+                          height: 52.0.h,
+                        ),
                       )
                     : const SizedBox.shrink(),
                 GestureDetector(
@@ -203,6 +230,13 @@ class _ChattingPageState extends State<ChattingPage> {
       ),
     );
   }
+}
+
+class ChattingList {
+  String? comment;
+  bool? isMyMessage;
+
+  ChattingList({this.comment, this.isMyMessage});
 }
 
 class GPTResponse {
