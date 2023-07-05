@@ -167,30 +167,24 @@ class _ChattingPageState extends State<ChattingPage> {
                 GestureDetector(
                   onTap: () => setState(() {
                     isWritingButtonTouch = false;
+                    textEditingController.clear();
                   }),
                   child: Padding(
                     padding: EdgeInsets.only(right: 25.0.w),
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          textEditingController.clear();
-                        });
-                      },
-                      child: Container(
-                        width: 84.0.w,
-                        height: 52.0.h,
-                        decoration: BoxDecoration(
-                          color: textEditingController.text.isEmpty
-                              ? Color(0xffB0B0B0)
-                              : Color(0xff6EB96C),
-                          borderRadius: BorderRadius.circular(100),
-                        ),
-                        child: Center(
-                          child: Text(
-                            "보내기",
-                            style: TextStyle(
-                                color: Colors.white, fontSize: 20.0.sp),
-                          ),
+                    child: Container(
+                      width: 84.0.w,
+                      height: 52.0.h,
+                      decoration: BoxDecoration(
+                        color: textEditingController.text.isEmpty
+                            ? Color(0xffB0B0B0)
+                            : Color(0xff6EB96C),
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "보내기",
+                          style:
+                              TextStyle(color: Colors.white, fontSize: 20.0.sp),
                         ),
                       ),
                     ),
