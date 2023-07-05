@@ -110,13 +110,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(left: 150.0.w, top: 318.0.h),
+                padding: EdgeInsets.only(left: 114.0.w, top: 318.0.h),
                 child: Image(
                   image: AssetImage(
                     'assets/images/logo.png',
                   ),
-                  width: 130.0.w,
-                  height: 233.0.h,
+                  width: 202.0.w,
+                  height: 228.0.h,
                 ),
               ),
               Padding(
