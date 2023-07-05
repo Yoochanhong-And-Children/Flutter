@@ -8,6 +8,72 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColor.backgroundColor,
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(height: 110),
+            Text(
+              "유하은 님",
+              style: TextStyle(
+                fontSize: 40,
+              ),
+            ),
+            Text(
+              "식사는 하셨나요?",
+              style: TextStyle(
+                fontSize: 40,
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  "보호자 정보",
+                  style: TextStyle(
+                    fontSize: 22,
+                    color: Color(0xff5A9D59),
+                  ),
+                ),
+                Container(
+                  width: 328,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: const Color(0xff5A9D59),
+                    borderRadius: BorderRadius.circular(20.0),
+                  ),
+                  child: Center(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(
+                          "양채원",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24.0,
+                          ),
+                        ),
+                        Text(
+                          "010-5845-4856",
+                          style: TextStyle(color: Colors.white, fontSize: 24.0),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 100),
+            Container(
+              width: 320.0,
+              height: 260.0,
+              decoration: BoxDecoration(
+                color: const Color(0xffD7EBD7),
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
