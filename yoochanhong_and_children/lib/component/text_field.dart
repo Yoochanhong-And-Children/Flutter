@@ -41,12 +41,17 @@ class _CustomTextFieldState extends State<CustomTextField> {
           widget.helperText!,
           style: TextStyle(
             fontSize: 20.0.sp,
+            fontFamily: 'Bold',
           ),
         ),
         SizedBox(height: 5.0.h),
-        SizedBox(
+        Container(
           width: widget.width.w,
           height: widget.height != null ? widget.height!.h : null,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15.r),
+          ),
           child: TextFormField(
             controller: widget.controller,
             cursorColor: Colors.black,
@@ -56,16 +61,24 @@ class _CustomTextFieldState extends State<CustomTextField> {
                 widget.textAlign != null ? widget.textAlign! : TextAlign.start,
             onChanged: (value) => setState(() {}),
             maxLength: widget.maxLength,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18.sp,
+              fontFamily: 'Bold',
+            ),
             decoration: InputDecoration(
               hintText: widget.hintText,
-              hintStyle: TextStyle(fontSize: 18.0.sp),
+              hintStyle: TextStyle(
+                fontSize: 18.0.sp,
+                fontFamily: 'Bold',
+              ),
               counterText: '',
               border: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
+                borderRadius: BorderRadius.all(Radius.circular(15)),
                 borderSide: BorderSide(color: Color(0xffDBD7E0), width: 1),
               ),
               focusedBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
+                borderRadius: BorderRadius.all(Radius.circular(15)),
                 borderSide: BorderSide(color: Color(0xff5A9D59), width: 2),
               ),
             ),

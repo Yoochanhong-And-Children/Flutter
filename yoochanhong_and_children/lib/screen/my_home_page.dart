@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:transition/transition.dart';
+import 'package:yoochanhong_and_children/screen/protector_registration_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -12,7 +14,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF90CF86),
+      backgroundColor: const Color(0xFF90CF86),
       body: Column(
         children: [
           Stack(
@@ -21,7 +23,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 273.0.w,
                 height: 143.0.h,
                 decoration: BoxDecoration(
-                  color: Color(0xFF6EB363),
+                  color: const Color(0xFF6EB363),
                   borderRadius: BorderRadius.only(
                     bottomRight: Radius.circular(100.r),
                   )
@@ -31,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 215.0.w,
                 height: 177.0.h,
                 decoration: BoxDecoration(
-                    color: Color(0xFF67A85C),
+                    color: const Color(0xFF67A85C),
                     borderRadius: BorderRadius.only(
                       bottomRight: Radius.circular(50.r),
                     )
@@ -41,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 150.0.w,
                 height: 233.0.h,
                 decoration: BoxDecoration(
-                    color: Color(0xFF62A058),
+                    color: const Color(0xFF62A058),
                     borderRadius: BorderRadius.only(
                       bottomRight: Radius.circular(50.r),
                     )
@@ -51,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 width: 82.0.w,
                 height: 270.0.h,
                 decoration: BoxDecoration(
-                    color: Color(0xFF5A9650),
+                    color: const Color(0xFF5A9650),
                     borderRadius: BorderRadius.only(
                       bottomRight: Radius.circular(50.r),
                     )
@@ -63,7 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 273.0.w,
                   height: 204.0.h,
                   decoration: BoxDecoration(
-                      color: Color(0xFF6EB363),
+                      color: const Color(0xFF6EB363),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(100.r),
                       )
@@ -76,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 215.0.w,
                   height: 239.0.h,
                   decoration: BoxDecoration(
-                      color: Color(0xFF67A85C),
+                      color: const Color(0xFF67A85C),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50.r),
                       )
@@ -89,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 150.0.w,
                   height: 295.0.h,
                   decoration: BoxDecoration(
-                      color: Color(0xFF62A058),
+                      color: const Color(0xFF62A058),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50.r),
                       )
@@ -102,7 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 82.0.w,
                   height: 330.0.h,
                   decoration: BoxDecoration(
-                      color: Color(0xFF5A9650),
+                      color: const Color(0xFF5A9650),
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(50.r),
                       )
@@ -112,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Padding(
                 padding: EdgeInsets.only(left: 114.0.w, top: 318.0.h),
                 child: Image(
-                  image: AssetImage(
+                  image: const AssetImage(
                     'assets/images/logo.png',
                   ),
                   width: 202.0.w,
@@ -121,25 +123,31 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               Padding(
                 padding: EdgeInsets.only(left: 51.0.w, top: 802.0.h),
-                child: Container(
-                  width: 328.0.w,
-                  height: 60.0.h,
-                  decoration: BoxDecoration(
-                    color: Color(0xFFFFFBF2),
-                    borderRadius: BorderRadius.circular(20.r),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.25),
-                        spreadRadius: 0,
-                        blurRadius: 4.h,
-                        offset: Offset(0, 4.0.h),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      Transition(
+                        child: const ProtectorRegistrationPage(),
+                        transitionEffect: TransitionEffect.RIGHT_TO_LEFT,
                       ),
-                    ],
-                  ),
-                  child: GestureDetector(
-                    onTap: () {
-
-                    },
+                    );
+                  },
+                  child: Container(
+                    width: 328.0.w,
+                    height: 60.0.h,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFFFFFBF2),
+                      borderRadius: BorderRadius.circular(20.r),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.25),
+                          spreadRadius: 0,
+                          blurRadius: 4.h,
+                          offset: Offset(0, 4.0.h),
+                        ),
+                      ],
+                    ),
                     child: Center(
                       child: Text(
                         '시작하기',

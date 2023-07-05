@@ -36,6 +36,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_screenutil: ^5.8.4
+  transition: ^2.0.2
 
 dev_dependencies:
   flutter_test:
@@ -103,5 +104,11 @@ flutter:
     - family: Heavy
       fonts:
         - asset: assets/fonts/NanumSquareNeo-eHv.ttf
+    - family: PLight
+      fonts:
+        - asset: assets/fonts/PyeongChangPeace-Light.ttf
+    - family: PBold
+      fonts:
+        - asset: assets/fonts/PyeongChangPeace-Bold.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

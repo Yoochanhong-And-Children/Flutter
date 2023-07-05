@@ -46,7 +46,13 @@ class _MyPageState extends State<MyPage> {
           backgroundColor: Colors.transparent,
           elevation: 0.0,
           leading: IconButton(
-            onPressed: null, icon: Icon(Icons.arrow_back_ios_new_rounded),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: Colors.black,
+            ),
           ),
         ),
       ),
@@ -57,12 +63,26 @@ class _MyPageState extends State<MyPage> {
               children: [
                 Padding(
                   padding: EdgeInsets.only(left: 30.0.w),
-                  child: Text(
-                    '유하은 님',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 32.sp,
-                    ),
+                  child: Row(
+                    children: [
+                      Text(
+                        "유하은",
+                        style: TextStyle(
+                          fontSize: 44.0.sp,
+                          fontFamily: 'PLight',
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: 7.0.w, top: 8.0.h),
+                        child: Text(
+                          "님",
+                          style: TextStyle(
+                            fontSize: 34.0.sp,
+                            fontFamily: 'PLight',
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -81,6 +101,7 @@ class _MyPageState extends State<MyPage> {
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18.sp,
+                    fontFamily: 'Bold',
                   ),
                 ),
               ),
@@ -94,7 +115,8 @@ class _MyPageState extends State<MyPage> {
                     '보호자 정보',
                     style: TextStyle(
                       color: Color(0xFF5A9D59),
-                      fontSize: 22.sp
+                      fontSize: 22.sp,
+                      fontFamily: 'ExtraBold',
                     ),
                   ),
                 ),
@@ -120,6 +142,7 @@ class _MyPageState extends State<MyPage> {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20.sp,
+                            fontFamily: 'ExtraBold',
                           ),
                           decoration: InputDecoration(
                             border: InputBorder.none
@@ -129,11 +152,11 @@ class _MyPageState extends State<MyPage> {
                       ),
                     ),
                   ),
-                  SizedBox(width: 47.0.w),
+                  SizedBox(width: 25.0.w),
                   Row(
                     children: [
                       SizedBox(
-                        width: 56.0.w,
+                        width: 60.0.w,
                         child: Padding(
                           padding: EdgeInsets.only(left: 20.0.w),
                           child: TextFormField(
@@ -146,6 +169,7 @@ class _MyPageState extends State<MyPage> {
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 20.sp,
+                              fontFamily: 'Heavy'
                             ),
                             decoration: InputDecoration(
                               border: InputBorder.none,
@@ -161,10 +185,11 @@ class _MyPageState extends State<MyPage> {
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.sp,
+                          fontFamily: 'Heavy',
                         ),
                       ),
                       SizedBox(
-                        width: 47.0.w,
+                        width: 55.0.w,
                         child: TextFormField(
                           maxLength: 4,
                           onChanged: (value) {
@@ -175,6 +200,7 @@ class _MyPageState extends State<MyPage> {
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20.sp,
+                            fontFamily: 'Heavy',
                           ),
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -189,15 +215,17 @@ class _MyPageState extends State<MyPage> {
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 20.sp,
+                          fontFamily: 'Heavy',
                         ),
                       ),
                       SizedBox(
-                        width: 47.0.w,
+                        width: 55.0.w,
                         child: TextFormField(
                           maxLength: 4,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 20.sp,
+                            fontFamily: 'Heavy',
                           ),
                           decoration: InputDecoration(
                             border: InputBorder.none,
@@ -234,6 +262,7 @@ class _MyPageState extends State<MyPage> {
                               style: TextStyle(
                                 fontSize: 24.0.sp,
                                 fontWeight: FontWeight.w600,
+                                fontFamily: 'ExtraBold',
                               ),
                             ),
                           ),
@@ -262,6 +291,7 @@ class _MyPageState extends State<MyPage> {
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 20.sp,
+                                        fontFamily: 'ExtraBold',
                                       ),
                                     ),
                                   ),
@@ -287,6 +317,7 @@ class _MyPageState extends State<MyPage> {
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 20.sp,
+                                        fontFamily: 'ExtraBold',
                                       ),
                                     ),
                                   ),
@@ -313,6 +344,7 @@ class _MyPageState extends State<MyPage> {
                     style: TextStyle(
                       color: Color(0xFF5A9D59),
                       fontSize: 18.sp,
+                      fontFamily: 'ExtraBold',
                     ),
                   ),
                 ),

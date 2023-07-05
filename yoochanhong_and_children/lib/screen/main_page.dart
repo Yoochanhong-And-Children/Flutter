@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:transition/transition.dart';
 import 'package:yoochanhong_and_children/common/common.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:yoochanhong_and_children/screen/my_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -28,55 +30,93 @@ class _MainPageState extends State<MainPage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        "유하은 님",
-                        style: TextStyle(
-                          fontSize: 40.0.sp,
-                        ),
+                      Row(
+                        children: [
+                          Text(
+                            "유하은",
+                            style: TextStyle(
+                              fontSize: 44.0.sp,
+                              fontFamily: 'PLight',
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(left: 7.0.w, top: 8.0.h),
+                            child: Text(
+                              "님",
+                              style: TextStyle(
+                                fontSize: 34.0.sp,
+                                fontFamily: 'PLight',
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "식사는 하셨나요?",
-                        style: TextStyle(
-                          fontSize: 40.0.sp,
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: "식사",
+                              style: TextStyle(
+                                color: Color(0xFF5A9D59),
+                                fontSize: 32.sp,
+                                fontFamily: 'ExtraBold',
+                              ),
+                            ),
+                            TextSpan(
+                              text: "는 하셨나요?",
+                              style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 32.sp,
+                                fontFamily: 'ExtraBold',
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ],
                   ),
                 ],
               ),
-              SizedBox(height: 40.0.h),
+              SizedBox(height: 72.0.h),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     "보호자 정보",
                     style: TextStyle(
-                      fontSize: 22,
+                      fontSize: 22.sp,
+                      fontFamily: 'ExtraBold',
                       color: Color(0xff5A9D59),
                     ),
                   ),
+                  SizedBox(height: 10.0.h),
                   Container(
                     width: 370.0.w,
                     height: 90.0.h,
                     decoration: BoxDecoration(
                       color: const Color(0xff5A9D59),
-                      borderRadius: BorderRadius.circular(20.0),
+                      borderRadius: BorderRadius.circular(20.r),
                     ),
                     child: Center(
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
+                          SizedBox(width: 20.0.w),
                           Text(
                             "양채원",
                             style: TextStyle(
                               color: Colors.white,
-                              fontSize: 28.0.sp,
+                              fontSize: 20.0.sp,
+                              fontFamily: 'ExtraBold',
                             ),
                           ),
+                          SizedBox(width: 115.0.w),
                           Text(
                             "010-5845-4856",
                             style: TextStyle(
-                                color: Colors.white, fontSize: 28.0.sp),
+                              color: Colors.white,
+                              fontSize: 18.0.sp,
+                              fontFamily: 'Heavy',
+                            ),
                           ),
                         ],
                       ),
@@ -84,13 +124,13 @@ class _MainPageState extends State<MainPage> {
                   ),
                 ],
               ),
-              SizedBox(height: 100.0.h),
+              SizedBox(height: 90.0.h),
               Container(
-                width: 320.0,
-                height: 260.0,
+                width: 320.0.w,
+                height: 260.0.h,
                 decoration: BoxDecoration(
-                  color: const Color(0xffD7EBD7),
-                  borderRadius: BorderRadius.circular(20.0),
+                  color: const Color(0xFFD7EBD7),
+                  borderRadius: BorderRadius.circular(20.r),
                 ),
                 child: PageView(
                   pageSnapping: true,
@@ -98,31 +138,34 @@ class _MainPageState extends State<MainPage> {
                   scrollDirection: Axis.horizontal,
                   children: [
                     Container(
-                      width: 320.0,
-                      height: 260.0,
+                      width: 320.0.w,
+                      height: 260.0.h,
                       decoration: BoxDecoration(
-                          color: const Color(0xffD7EBD7),
-                          borderRadius: BorderRadius.circular(20.0)),
+                          color: const Color(0xFFD7EBD7),
+                          borderRadius: BorderRadius.circular(20.r),
+                      ),
                       child: Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Column(
                               children: [
-                                SizedBox(height: 40.0.h),
+                                SizedBox(height: 48.0.h),
                                 Image.asset(
                                   "assets/images/chat.png",
-                                  width: 49,
-                                  height: 63,
+                                  width: 60.0.w,
+                                  height: 55.0.h,
                                 ),
-                                SizedBox(height: 30.0.h),
+                                SizedBox(height: 35.0.h),
                                 GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+
+                                  },
                                   child: Container(
-                                    width: 190,
-                                    height: 62,
+                                    width: 190.0.w,
+                                    height: 62.0.h,
                                     decoration: BoxDecoration(
-                                      color: const Color(0xff6BB86A),
+                                      color: const Color(0xFF6BB86A),
                                       borderRadius: BorderRadius.circular(20.0),
                                     ),
                                     child: Center(
@@ -130,7 +173,8 @@ class _MainPageState extends State<MainPage> {
                                         "채팅하러 가기",
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 24.0.sp,
+                                          fontSize: 18.0.sp,
+                                          fontFamily: 'ExtraBold',
                                         ),
                                       ),
                                     ),
@@ -144,20 +188,20 @@ class _MainPageState extends State<MainPage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
-                                    width: 8.05,
-                                    height: 8.0,
+                                    width: 8.05.w,
+                                    height: 8.0.h,
                                     decoration: BoxDecoration(
-                                      color: const Color(0xff5C5C5C),
-                                      borderRadius: BorderRadius.circular(50.0),
+                                      color: const Color(0xFF5C5C5C),
+                                      borderRadius: BorderRadius.circular(50.r),
                                     ),
                                   ),
                                   SizedBox(width: 5.0.w),
                                   Container(
-                                    width: 8.05,
-                                    height: 8.0,
+                                    width: 8.05.w,
+                                    height: 8.0.h,
                                     decoration: BoxDecoration(
-                                      color: const Color(0xffFFFFFF),
-                                      borderRadius: BorderRadius.circular(50.0),
+                                      color: const Color(0xFFFFFFFF),
+                                      borderRadius: BorderRadius.circular(50.r),
                                     ),
                                   ),
                                 ],
@@ -168,39 +212,48 @@ class _MainPageState extends State<MainPage> {
                       ),
                     ),
                     Container(
-                      width: 320.0,
-                      height: 260.0,
+                      width: 320.0.w,
+                      height: 260.0.h,
                       decoration: BoxDecoration(
                           color: const Color(0xffD7EBD7),
-                          borderRadius: BorderRadius.circular(20.0)),
+                          borderRadius: BorderRadius.circular(20.r)),
                       child: Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Column(
                               children: [
-                                SizedBox(height: 40.0.h),
+                                SizedBox(height: 47.0.h),
                                 Image.asset(
                                   "assets/images/person.png",
-                                  width: 49,
-                                  height: 63,
+                                  width: 49.0.w,
+                                  height: 63.0.h,
                                 ),
-                                SizedBox(height: 30.0.h),
+                                SizedBox(height: 28.0.h),
                                 GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      Transition(
+                                        child: const MyPage(),
+                                        transitionEffect: TransitionEffect.RIGHT_TO_LEFT,
+                                      ),
+                                    );
+                                  },
                                   child: Container(
-                                    width: 190,
-                                    height: 62,
+                                    width: 190.0.w,
+                                    height: 62.0.h,
                                     decoration: BoxDecoration(
-                                      color: const Color(0xff6BB86A),
-                                      borderRadius: BorderRadius.circular(20.0),
+                                      color: const Color(0xFF6BB86A),
+                                      borderRadius: BorderRadius.circular(20.r),
                                     ),
                                     child: Center(
                                       child: Text(
                                         "내 정보 보러가기",
                                         style: TextStyle(
                                           color: Colors.white,
-                                          fontSize: 24.0.sp,
+                                          fontSize: 18.sp,
+                                          fontFamily: 'ExtraBold',
                                         ),
                                       ),
                                     ),
@@ -214,20 +267,20 @@ class _MainPageState extends State<MainPage> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Container(
-                                    width: 8.05,
-                                    height: 8.0,
+                                    width: 8.05.w,
+                                    height: 8.0.h,
                                     decoration: BoxDecoration(
-                                      color: const Color(0xffFFFFFF),
-                                      borderRadius: BorderRadius.circular(50.0),
+                                      color: const Color(0xFFFFFFFF),
+                                      borderRadius: BorderRadius.circular(50.r),
                                     ),
                                   ),
                                   SizedBox(width: 5.0.w),
                                   Container(
-                                    width: 8.05,
-                                    height: 8.0,
+                                    width: 8.05.w,
+                                    height: 8.0.h,
                                     decoration: BoxDecoration(
-                                      color: const Color(0xff5C5C5C),
-                                      borderRadius: BorderRadius.circular(50.0),
+                                      color: const Color(0xFF5C5C5C),
+                                      borderRadius: BorderRadius.circular(50.r),
                                     ),
                                   ),
                                 ],
