@@ -137,6 +137,7 @@ class _ChattingPageState extends State<ChattingPage> {
                           child: TextField(
                             controller: textEditingController,
                             cursorColor: Colors.black,
+                            onChanged: (value) => setState(() {}),
                             autofocus: true,
                             keyboardType: TextInputType.text,
                             decoration: const InputDecoration(
@@ -173,7 +174,9 @@ class _ChattingPageState extends State<ChattingPage> {
                       width: 84.0.w,
                       height: 52.0.h,
                       decoration: BoxDecoration(
-                        color: Color(0xffB0B0B0),
+                        color: textEditingController.text.isEmpty
+                            ? Color(0xffB0B0B0)
+                            : Color(0xff6EB96C),
                         borderRadius: BorderRadius.circular(100),
                       ),
                       child: Center(
