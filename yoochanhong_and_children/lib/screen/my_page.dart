@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:yoochanhong_and_children/common/common.dart';
+import 'package:yoochanhong_and_children/model/wording_board.dart';
+import 'package:yoochanhong_and_children/service/get_wording_board.dart';
 
 class MyPage extends StatefulWidget {
   const MyPage({Key? key}) : super(key: key);
@@ -21,6 +23,8 @@ class _MyPageState extends State<MyPage> {
 
   late FixedExtentScrollController riceTimeScrollController =
   FixedExtentScrollController();
+
+  Future<WordingBoard>? wordingBoard;
 
   List<String> riceType = [
     '아침',
@@ -67,6 +71,7 @@ class _MyPageState extends State<MyPage> {
     protectorNumber2Controller.text = '1234';
     protectorNumber3Controller.text = '5678';
     riceTimeScrollController = FixedExtentScrollController(initialItem: 0);
+    wordingBoard = getWordingBoard();
   }
 
   @override
@@ -141,23 +146,40 @@ class _MyPageState extends State<MyPage> {
               ],
             ),
             SizedBox(height: 40.0.h),
-            Container(
-              width: 346.0.w,
-              height: 44.0.h,
-              decoration: BoxDecoration(
-                color: const Color(0xFF5A9D59),
-                borderRadius: BorderRadius.circular(50.r),
-              ),
-              child: Center(
-                child: Text(
-                  '노인을 위한 나라는 없다',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 18.sp,
-                    fontFamily: 'Bold',
-                  ),
-                ),
-              ),
+            FutureBuilder(
+              future: wordingBoard,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return Container(
+                    width: 346.0.w,
+                    height: 44.0.h,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF5A9D59),
+                      borderRadius: BorderRadius.circular(50.r),
+                    ),
+                    child: Center(
+                      child: Text(
+                        snapshot.data!.wording.toString(),
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18.sp,
+                          fontFamily: 'Bold',
+                        ),
+                      ),
+                    ),
+                  );
+                } else if (snapshot.hasError) {
+                  return Center(
+                    child: Text(
+                      snapshot.error.toString(),
+                    ),
+                  );
+                } else {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              }
             ),
             SizedBox(height: 75.0.h),
             Align(
