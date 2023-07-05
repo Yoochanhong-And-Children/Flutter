@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:transition/transition.dart';
+import 'package:yoochanhong_and_children/screen/main_page.dart';
 import 'package:yoochanhong_and_children/screen/protector_registration_page.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -26,37 +28,37 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: const Color(0xFF6EB363),
                   borderRadius: BorderRadius.only(
                     bottomRight: Radius.circular(100.r),
-                  )
+                  ),
                 ),
               ),
               Container(
                 width: 215.0.w,
                 height: 177.0.h,
                 decoration: BoxDecoration(
-                    color: const Color(0xFF67A85C),
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(50.r),
-                    )
+                  color: const Color(0xFF67A85C),
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(50.r),
+                  ),
                 ),
               ),
               Container(
                 width: 150.0.w,
                 height: 233.0.h,
                 decoration: BoxDecoration(
-                    color: const Color(0xFF62A058),
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(50.r),
-                    )
+                  color: const Color(0xFF62A058),
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(50.r),
+                  ),
                 ),
               ),
               Container(
                 width: 82.0.w,
                 height: 270.0.h,
                 decoration: BoxDecoration(
-                    color: const Color(0xFF5A9650),
-                    borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(50.r),
-                    )
+                  color: const Color(0xFF5A9650),
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(50.r),
+                  ),
                 ),
               ),
               Padding(
@@ -65,10 +67,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 273.0.w,
                   height: 204.0.h,
                   decoration: BoxDecoration(
-                      color: const Color(0xFF6EB363),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(100.r),
-                      )
+                    color: const Color(0xFF6EB363),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(100.r),
+                    ),
                   ),
                 ),
               ),
@@ -78,10 +80,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 215.0.w,
                   height: 239.0.h,
                   decoration: BoxDecoration(
-                      color: const Color(0xFF67A85C),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50.r),
-                      )
+                    color: const Color(0xFF67A85C),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(50.r),
+                    ),
                   ),
                 ),
               ),
@@ -91,10 +93,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 150.0.w,
                   height: 295.0.h,
                   decoration: BoxDecoration(
-                      color: const Color(0xFF62A058),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50.r),
-                      )
+                    color: const Color(0xFF62A058),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(50.r),
+                    ),
                   ),
                 ),
               ),
@@ -104,10 +106,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   width: 82.0.w,
                   height: 330.0.h,
                   decoration: BoxDecoration(
-                      color: const Color(0xFF5A9650),
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50.r),
-                      )
+                    color: const Color(0xFF5A9650),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(50.r),
+                    ),
                   ),
                 ),
               ),
@@ -124,14 +126,26 @@ class _MyHomePageState extends State<MyHomePage> {
               Padding(
                 padding: EdgeInsets.only(left: 51.0.w, top: 802.0.h),
                 child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      Transition(
-                        child: const ProtectorRegistrationPage(),
-                        transitionEffect: TransitionEffect.RIGHT_TO_LEFT,
-                      ),
-                    );
+                  onTap: () async {
+                    SharedPreferences prefs =
+                        await SharedPreferences.getInstance();
+                    if (prefs.getString("name") != null) {
+                      Navigator.push(
+                        context,
+                        Transition(
+                          child: const MainPage(),
+                          transitionEffect: TransitionEffect.RIGHT_TO_LEFT,
+                        ),
+                      );
+                    } else {
+                      Navigator.push(
+                        context,
+                        Transition(
+                          child: const ProtectorRegistrationPage(),
+                          transitionEffect: TransitionEffect.RIGHT_TO_LEFT,
+                        ),
+                      );
+                    }
                   },
                   child: Container(
                     width: 328.0.w,
