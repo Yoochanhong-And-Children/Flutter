@@ -74,8 +74,8 @@ class _ChattingPageState extends State<ChattingPage> {
                           textDirection: TextDirection.ltr,
                           children: [
                             Container(
-                              width: (list[index].length * 25).w,
-                              height: 59.0.h,
+                              height: 10,
+                              width: MediaQuery.of(context).size.width - 40,
                               decoration: const BoxDecoration(
                                 color: Color(0xff6EB96C),
                                 borderRadius: BorderRadius.only(
@@ -135,30 +135,28 @@ class _ChattingPageState extends State<ChattingPage> {
                         padding: EdgeInsets.only(left: 25.0.w),
                         child: Container(
                           width: 243.0.w,
-                          height: 60.0.h,
+                          height: 60.0 >
+                                  textEditingController.text.length / 15 * 60
+                              ? 60.0.w
+                              : (textEditingController.text.length / 15) * 15 +
+                                  60.0.w,
                           decoration: BoxDecoration(
                             color: const Color(0xffCCCCCC),
                             borderRadius: BorderRadius.circular(20.0),
+                            border: Border.all(width: 1, color: Colors.black),
                           ),
-                          child: TextField(
-                            controller: textEditingController,
-                            cursorColor: Colors.black,
-                            onChanged: (value) => setState(() {}),
-                            autofocus: true,
-                            keyboardType: TextInputType.text,
-                            decoration: const InputDecoration(
-                              counterText: '',
-                              border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                borderSide:
-                                    BorderSide(color: Color(0xffDBD7E0)),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20)),
-                                borderSide:
-                                    BorderSide(color: Color(0xffDBD7E0)),
+                          child: Padding(
+                            padding: EdgeInsets.only(left: 15.0.w, top: 5.0.h),
+                            child: TextField(
+                              controller: textEditingController,
+                              cursorColor: Colors.black,
+                              onChanged: (value) => setState(() {}),
+                              autofocus: true,
+                              maxLines: null,
+                              keyboardType: TextInputType.text,
+                              decoration: const InputDecoration(
+                                counterText: '',
+                                border: InputBorder.none,
                               ),
                             ),
                           ),
