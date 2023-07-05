@@ -60,9 +60,9 @@ class _MainPageState extends State<MainPage> {
                                 TextSpan(
                                   text: "식사",
                                   style: TextStyle(
-                                    color: Color(0xFF5A9D59),
-                                    fontSize: 32.sp,
-                                    fontFamily: 'ExtraBold'
+                                      color: Color(0xFF5A9D59),
+                                      fontSize: 32.sp,
+                                      fontFamily: 'ExtraBold'
                                   ),
                                 ),
                                 TextSpan(
@@ -157,8 +157,8 @@ class _MainPageState extends State<MainPage> {
                       width: 320.0.w,
                       height: 260.0.h,
                       decoration: BoxDecoration(
-                          color: const Color(0xFFD7EBD7),
-                          borderRadius: BorderRadius.circular(20.r),
+                        color: const Color(0xFFD7EBD7),
+                        borderRadius: BorderRadius.circular(20.r),
                       ),
                       child: Center(
                         child: Column(
@@ -179,7 +179,7 @@ class _MainPageState extends State<MainPage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                const ChattingPage()));
+                                            const ChattingPage()));
                                   },
                                   child: Container(
                                     width: 190.0.w,
