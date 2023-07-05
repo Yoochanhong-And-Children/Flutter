@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:transition/transition.dart';
 import 'package:yoochanhong_and_children/common/common.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:yoochanhong_and_children/screen/chatting_page.dart';
 import 'package:yoochanhong_and_children/screen/my_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -174,7 +175,11 @@ class _MainPageState extends State<MainPage> {
                                 SizedBox(height: 35.0.h),
                                 GestureDetector(
                                   onTap: () {
-
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const ChattingPage()));
                                   },
                                   child: Container(
                                     width: 190.0.w,
