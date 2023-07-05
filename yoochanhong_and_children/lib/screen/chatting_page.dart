@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:yoochanhong_and_children/common/common.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -77,7 +78,7 @@ class _ChattingPageState extends State<ChattingPage> {
                   itemBuilder: (context, index) {
                     return Container(
                       width: MediaQuery.of(context).size.width,
-                      height: list[index].comment!.length * 1 + 60.0.h,
+                      height: list[index].comment!.length + 60.0.h,
                       decoration: BoxDecoration(
                         color: list[index].isMyMessage!
                             ? const Color(0xffE7E7E7)
@@ -95,17 +96,34 @@ class _ChattingPageState extends State<ChattingPage> {
                                     height: 39.0.h,
                                   )
                                 : const SizedBox.shrink(),
-                            SizedBox(width: 20.0.w),
+                            list[index].isMyMessage!
+                                ? SizedBox(width: 20.0.w)
+                                : const SizedBox.shrink(),
                             Expanded(
-                              child: Text(
-                                list[index].comment.toString(),
-                                style: TextStyle(
-                                  fontSize: 20.0.sp,
-                                  fontFamily: 'Bold',
-                                  color: Colors.black,
-                                ),
-                                softWrap: true,
-                              ),
+                              child: list[index].isMyMessage!
+                                  ? Text(
+                                      list[index].comment.toString(),
+                                      style: TextStyle(
+                                        fontSize: 20.0.sp,
+                                        fontFamily: 'Bold',
+                                        color: Colors.black,
+                                      ),
+                                      softWrap: true,
+                                    )
+                                  : AnimatedTextKit(
+                                      animatedTexts: [
+                                        TyperAnimatedText(
+                                          list[index].comment.toString(),
+                                          textStyle: TextStyle(
+                                            fontSize: 20.0.sp,
+                                            fontFamily: 'Bold',
+                                            color: Colors.black,
+                                          ),
+                                        ),
+                                      ],
+                                      repeatForever: true,
+                                      isRepeatingAnimation: false,
+                                    ),
                             ),
                           ],
                         ),
@@ -139,10 +157,9 @@ class _ChattingPageState extends State<ChattingPage> {
                               child: Text(
                                 "글쓰기",
                                 style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 20.0.sp,
-                                  fontFamily: 'ExtraBold'
-                                ),
+                                    color: Colors.white,
+                                    fontSize: 20.0.sp,
+                                    fontFamily: 'ExtraBold'),
                               ),
                             ),
                           ),
