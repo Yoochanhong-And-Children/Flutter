@@ -7,7 +7,15 @@ import 'package:yoochanhong_and_children/screen/chatting_page.dart';
 import 'package:yoochanhong_and_children/screen/my_page.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+  MainPage(
+      {super.key,
+      required this.id,
+      required this.name,
+      required this.guardianName,
+      required this.guardianPhoneNumber});
+
+  int id;
+  String name, guardianName, guardianPhoneNumber;
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -65,16 +73,14 @@ class _MainPageState extends State<MainPage> {
                                   style: TextStyle(
                                       color: Color(0xFF5A9D59),
                                       fontSize: 32.sp,
-                                      fontFamily: 'ExtraBold'
-                                  ),
+                                      fontFamily: 'ExtraBold'),
                                 ),
                                 TextSpan(
                                   text: "는 하셨나요?",
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontSize: 32.sp,
-                                      fontFamily: 'ExtraBold'
-                                  ),
+                                      fontFamily: 'ExtraBold'),
                                 ),
                               ],
                             ),
@@ -97,7 +103,9 @@ class _MainPageState extends State<MainPage> {
                               width: 181.0.w,
                               height: 90.0.h,
                               decoration: BoxDecoration(
-                                color: clickYes == true ? Color(0xFF5A9D59) : Color(0xFFB0B0B0),
+                                color: clickYes == true
+                                    ? Color(0xFF5A9D59)
+                                    : Color(0xFFB0B0B0),
                                 borderRadius: BorderRadius.only(
                                   topLeft: Radius.circular(20.r),
                                   bottomLeft: Radius.circular(20.r),
@@ -129,7 +137,9 @@ class _MainPageState extends State<MainPage> {
                               width: 181.0.w,
                               height: 90.0.h,
                               decoration: BoxDecoration(
-                                color: clickNo == true ? Color(0xFF5A9D59) : Color(0xFFB0B0B0),
+                                color: clickNo == true
+                                    ? Color(0xFF5A9D59)
+                                    : Color(0xFFB0B0B0),
                                 borderRadius: BorderRadius.only(
                                   topRight: Radius.circular(20.r),
                                   bottomRight: Radius.circular(20.r),
@@ -192,7 +202,7 @@ class _MainPageState extends State<MainPage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                            const ChattingPage()));
+                                                const ChattingPage()));
                                   },
                                   child: Container(
                                     width: 190.0.w,
@@ -269,7 +279,8 @@ class _MainPageState extends State<MainPage> {
                                       context,
                                       Transition(
                                         child: const MyPage(),
-                                        transitionEffect: TransitionEffect.RIGHT_TO_LEFT,
+                                        transitionEffect:
+                                            TransitionEffect.RIGHT_TO_LEFT,
                                       ),
                                     );
                                   },
