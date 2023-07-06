@@ -226,11 +226,21 @@ class _ChattingPageState extends State<ChattingPage> {
                             setState(() {
                               isListening = false;
                             });
-                            speechToText.stop();
-                            setState(() {
-                              ChattingList cl = ChattingList(
-                                  comment: text, isMyMessage: true);
-                              list.add(cl);
+                            speechToText.stop().then((value) {
+                              setState(() {
+                                ChattingList cl = ChattingList(
+                                    comment: text, isMyMessage: true);
+                                list.add(cl);
+                              });
+                              gptResponse(text).then((value) {
+                                ChattingList cl = ChattingList(
+                                    isMyMessage: false,
+                                    comment: value.choices![0].message!.content
+                                        .toString());
+                                setState(() {
+                                  list.add(cl);
+                                });
+                              });
                             });
                           }
                         },
@@ -243,7 +253,6 @@ class _ChattingPageState extends State<ChattingPage> {
                     : const SizedBox.shrink(),
                 GestureDetector(
                   onTap: () async {
-                    String text = '';
                     setState(() {
                       isWritingButtonTouch = false;
                       ChattingList cl = ChattingList(
