@@ -278,7 +278,12 @@ class _MainPageState extends State<MainPage> {
                                     Navigator.push(
                                       context,
                                       Transition(
-                                        child: const MyPage(),
+                                        child: MyPage(
+                                          name: widget.name,
+                                          id: widget.id,
+                                          guardianName: widget.guardianName,
+                                          guardianPhoneNumber: widget.guardianPhoneNumber,
+                                        ),
                                         transitionEffect:
                                             TransitionEffect.RIGHT_TO_LEFT,
                                       ),
