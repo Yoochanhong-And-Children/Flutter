@@ -139,10 +139,10 @@ class _MyHomePageState extends State<MyHomePage> {
                         context,
                         Transition(
                           child: MainPage(
-                            id: id!,
-                            name: name!,
-                            guardianName: guardianName!,
-                            guardianPhoneNumber: guardianPhoneNumber!,
+                            id: id!.toInt(),
+                            name: name.toString(),
+                            guardianName: guardianName.toString(),
+                            guardianPhoneNumber: guardianPhoneNumber.toString(),
                           ),
                           transitionEffect: TransitionEffect.RIGHT_TO_LEFT,
                         ),
