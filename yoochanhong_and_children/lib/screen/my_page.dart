@@ -8,7 +8,13 @@ import 'package:yoochanhong_and_children/service/get_wording_board.dart';
 import 'package:yoochanhong_and_children/service/patch_user_info.dart';
 
 class MyPage extends StatefulWidget {
-  MyPage({Key? key, required this.name, required this.guardianName, required this.guardianPhoneNumber, required this.id}) : super(key: key);
+  MyPage(
+      {Key? key,
+      required this.name,
+      required this.guardianName,
+      required this.guardianPhoneNumber,
+      required this.id})
+      : super(key: key);
   String name, guardianName, guardianPhoneNumber;
   int id;
 
@@ -26,7 +32,7 @@ class _MyPageState extends State<MyPage> {
   FocusNode protectorNum3FocusNode = FocusNode();
 
   late FixedExtentScrollController riceTimeScrollController =
-  FixedExtentScrollController();
+      FixedExtentScrollController();
 
   Future<WordingBoard>? wordingBoard;
 
@@ -70,7 +76,7 @@ class _MyPageState extends State<MyPage> {
   @override
   void initState() {
     super.initState();
-    protectorNameController.text = 'Text';
+    protectorNameController.text = widget.name;
     protectorNumber1Controller.text = '010';
     protectorNumber2Controller.text = '1234';
     protectorNumber3Controller.text = '5678';
@@ -96,7 +102,6 @@ class _MyPageState extends State<MyPage> {
       }
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +133,7 @@ class _MyPageState extends State<MyPage> {
                   child: Row(
                     children: [
                       Text(
-                        "유하은",
+                        widget.name,
                         style: TextStyle(
                           fontSize: 44.0.sp,
                           fontFamily: 'PLight',
@@ -151,40 +156,39 @@ class _MyPageState extends State<MyPage> {
             ),
             SizedBox(height: 40.0.h),
             FutureBuilder(
-              future: wordingBoard,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return Container(
-                    width: 346.0.w,
-                    height: 44.0.h,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF5A9D59),
-                      borderRadius: BorderRadius.circular(50.r),
-                    ),
-                    child: Center(
-                      child: Text(
-                        snapshot.data!.wording.toString(),
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.sp,
-                          fontFamily: 'Bold',
+                future: wordingBoard,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return Container(
+                      width: 346.0.w,
+                      height: 44.0.h,
+                      decoration: BoxDecoration(
+                        color: const Color(0xFF5A9D59),
+                        borderRadius: BorderRadius.circular(50.r),
+                      ),
+                      child: Center(
+                        child: Text(
+                          snapshot.data!.wording.toString(),
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18.sp,
+                            fontFamily: 'Bold',
+                          ),
                         ),
                       ),
-                    ),
-                  );
-                } else if (snapshot.hasError) {
-                  return Center(
-                    child: Text(
-                      snapshot.error.toString(),
-                    ),
-                  );
-                } else {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              }
-            ),
+                    );
+                  } else if (snapshot.hasError) {
+                    return Center(
+                      child: Text(
+                        snapshot.error.toString(),
+                      ),
+                    );
+                  } else {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                }),
             SizedBox(height: 75.0.h),
             Align(
               alignment: Alignment.centerLeft,
@@ -216,21 +220,19 @@ class _MyPageState extends State<MyPage> {
                                     scrollController: riceTimeScrollController,
                                     itemExtent: 50.0.h,
                                     onSelectedItemChanged: (int index) {
-                                      setState(() {
-
-                                      });
+                                      setState(() {});
                                     },
                                     children: riceTime
                                         .map<Widget>((item) => Center(
-                                          child: Text(
-                                      item,
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 24.sp,
-                                          fontFamily: 'ExtraBold',
-                                      ),
-                                    ),
-                                        ))
+                                              child: Text(
+                                                item,
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 24.sp,
+                                                  fontFamily: 'ExtraBold',
+                                                ),
+                                              ),
+                                            ))
                                         .toList(),
                                   ),
                                   const SizedBox(height: 16.0),
@@ -275,7 +277,6 @@ class _MyPageState extends State<MyPage> {
                         );
                       },
                     );
-
                   },
                   child: Container(
                     width: 370.0.w,
@@ -344,9 +345,8 @@ class _MyPageState extends State<MyPage> {
                             fontSize: 20.sp,
                             fontFamily: 'ExtraBold',
                           ),
-                          decoration: const InputDecoration(
-                            border: InputBorder.none
-                          ),
+                          decoration:
+                              const InputDecoration(border: InputBorder.none),
                           controller: protectorNameController,
                         ),
                       ),
@@ -363,14 +363,14 @@ class _MyPageState extends State<MyPage> {
                             maxLength: 3,
                             onChanged: (value) {
                               if (value.length == 3) {
-                                FocusScope.of(context).requestFocus(protectorNum2FocusNode);
+                                FocusScope.of(context)
+                                    .requestFocus(protectorNum2FocusNode);
                               }
                             },
                             style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20.sp,
-                              fontFamily: 'Heavy'
-                            ),
+                                color: Colors.white,
+                                fontSize: 20.sp,
+                                fontFamily: 'Heavy'),
                             decoration: const InputDecoration(
                               border: InputBorder.none,
                               counterText: '',
@@ -394,7 +394,8 @@ class _MyPageState extends State<MyPage> {
                           maxLength: 4,
                           onChanged: (value) {
                             if (value.length == 4) {
-                              FocusScope.of(context).requestFocus(protectorNum3FocusNode);
+                              FocusScope.of(context)
+                                  .requestFocus(protectorNum3FocusNode);
                             }
                           },
                           style: TextStyle(
@@ -502,7 +503,11 @@ class _MyPageState extends State<MyPage> {
                               padding: EdgeInsets.only(bottom: 10.0.h),
                               child: GestureDetector(
                                 onTap: () {
-                                  patchUserInfo(widget.name, widget.guardianName, widget.guardianPhoneNumber, widget.id);
+                                  patchUserInfo(
+                                      widget.name,
+                                      widget.guardianName,
+                                      widget.guardianPhoneNumber,
+                                      widget.id);
                                 },
                                 child: Container(
                                   width: 119.0.w,
@@ -535,9 +540,8 @@ class _MyPageState extends State<MyPage> {
                 width: 74.0.w,
                 height: 40.0.h,
                 decoration: BoxDecoration(
-                  color: const Color(0xFFDAEEDA),
-                  borderRadius: BorderRadius.circular(15.r)
-                ),
+                    color: const Color(0xFFDAEEDA),
+                    borderRadius: BorderRadius.circular(15.r)),
                 child: Center(
                   child: Text(
                     '변경',
