@@ -45,7 +45,7 @@ class _MainPageState extends State<MainPage> {
                       Row(
                         children: [
                           Text(
-                            "유하은",
+                            widget.name,
                             style: TextStyle(
                               fontSize: 44.0.sp,
                               fontFamily: 'PLight',
