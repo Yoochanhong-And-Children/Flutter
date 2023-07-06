@@ -38,6 +38,7 @@ class _ChattingPageState extends State<ChattingPage> {
     textEditingController.dispose();
     scrollController.dispose();
     focusNode.dispose();
+    list.clear();
   }
 
   @override
@@ -251,6 +252,7 @@ class _ChattingPageState extends State<ChattingPage> {
                                   duration: Duration(milliseconds: 300),
                                   curve: Curves.easeOut,
                                 );
+                                print(list);
                               });
                             });
                           }
