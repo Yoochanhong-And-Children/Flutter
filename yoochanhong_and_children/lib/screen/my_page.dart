@@ -1,12 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:yoochanhong_and_children/common/common.dart';
 import 'package:yoochanhong_and_children/model/wording_board.dart';
 import 'package:yoochanhong_and_children/service/get_wording_board.dart';
+import 'package:yoochanhong_and_children/service/patch_user_info.dart';
 
 class MyPage extends StatefulWidget {
-  const MyPage({Key? key}) : super(key: key);
+  MyPage({Key? key, required this.name, required this.guardianName, required this.guardianPhoneNumber, required this.id}) : super(key: key);
+  String name, guardianName, guardianPhoneNumber;
+  int id;
 
   @override
   State<MyPage> createState() => _MyPageState();
@@ -87,12 +91,12 @@ class _MyPageState extends State<MyPage> {
     setState(() {
       if (selectedPickerIndex == 2) {
         Navigator.of(context).pop();
-        selectedPickerIndex = 0;
       } else if (selectedPickerIndex < 2) {
         selectedPickerIndex++;
       }
     });
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -188,6 +192,7 @@ class _MyPageState extends State<MyPage> {
                 padding: EdgeInsets.only(left: 30.0.w),
                 child: GestureDetector(
                   onTap: () {
+                    if (selectedPickerIndex == 2) selectedPickerIndex = 0;
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
@@ -471,7 +476,7 @@ class _MyPageState extends State<MyPage> {
                               padding: EdgeInsets.only(bottom: 10.0.h),
                               child: GestureDetector(
                                 onTap: () {
-
+                                  Navigator.of(context).pop();
                                 },
                                 child: Container(
                                   width: 119.0.w,
@@ -497,7 +502,7 @@ class _MyPageState extends State<MyPage> {
                               padding: EdgeInsets.only(bottom: 10.0.h),
                               child: GestureDetector(
                                 onTap: () {
-
+                                  patchUserInfo(widget.name, widget.guardianName, widget.guardianPhoneNumber, widget.id);
                                 },
                                 child: Container(
                                   width: 119.0.w,
