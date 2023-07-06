@@ -160,19 +160,22 @@ class _MyPageState extends State<MyPage> {
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return Container(
-                      width: 346.0.w,
-                      height: 44.0.h,
+                      width: 370.0.w,
+                      height: 70.0.h,
                       decoration: BoxDecoration(
                         color: const Color(0xFF5A9D59),
-                        borderRadius: BorderRadius.circular(50.r),
+                        borderRadius: BorderRadius.circular(10.r),
                       ),
                       child: Center(
-                        child: Text(
-                          snapshot.data!.wording.toString(),
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18.sp,
-                            fontFamily: 'Bold',
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 10.0.w),
+                          child: Text(
+                            snapshot.data!.wording.toString(),
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18.sp,
+                              fontFamily: 'Bold',
+                            ),
                           ),
                         ),
                       ),
