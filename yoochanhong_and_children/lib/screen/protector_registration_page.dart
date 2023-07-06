@@ -111,6 +111,7 @@ class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
                   if (value.id != null) {
                     SharedPreferences prefs =
                         await SharedPreferences.getInstance();
+                    await prefs.setInt("id", value.id!.toInt());
                     await prefs.setString(
                         "guardian_name", protectorNameController.text);
                     await prefs.setString(
