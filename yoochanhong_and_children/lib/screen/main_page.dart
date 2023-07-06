@@ -213,7 +213,7 @@ class _MainPageState extends State<MainPage> {
                                     ),
                                     child: Center(
                                       child: Text(
-                                        "채팅하러 가기",
+                                        "대화하러 가기",
                                         style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 18.0.sp,
