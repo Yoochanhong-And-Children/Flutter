@@ -108,7 +108,7 @@ class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
                 signUp(userNameController.text, protectorNameController.text,
                         token, phoneNumberController.text)
                     .then((value) async {
-                  if (value == 1) {
+                  if (value.id != null) {
                     SharedPreferences prefs =
                         await SharedPreferences.getInstance();
                     await prefs.setString(
