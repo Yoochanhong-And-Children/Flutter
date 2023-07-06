@@ -130,10 +130,20 @@ class _MyHomePageState extends State<MyHomePage> {
                     SharedPreferences prefs =
                         await SharedPreferences.getInstance();
                     if (prefs.getString("name") != null) {
+                      int? id = prefs.getInt("id");
+                      String? name = prefs.getString("name");
+                      String? guardianName = prefs.getString("guardian_name");
+                      String? guardianPhoneNumber =
+                          prefs.getString("guardian_phone_number");
                       Navigator.push(
                         context,
                         Transition(
-                          child: const MainPage(),
+                          child: MainPage(
+                            id: id!,
+                            name: name!,
+                            guardianName: guardianName!,
+                            guardianPhoneNumber: guardianPhoneNumber!,
+                          ),
                           transitionEffect: TransitionEffect.RIGHT_TO_LEFT,
                         ),
                       );
