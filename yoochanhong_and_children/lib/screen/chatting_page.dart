@@ -74,6 +74,7 @@ class _ChattingPageState extends State<ChattingPage> {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
                 child: ListView.builder(
+                  controller: scrollController,
                   itemCount: list.length,
                   itemBuilder: (context, index) {
                     return Container(
@@ -231,6 +232,11 @@ class _ChattingPageState extends State<ChattingPage> {
                                 ChattingList cl = ChattingList(
                                     comment: text, isMyMessage: true);
                                 list.add(cl);
+                                scrollController.animateTo(
+                                  scrollController.position.maxScrollExtent,
+                                  duration: Duration(milliseconds: 300),
+                                  curve: Curves.easeOut,
+                                );
                               });
                               gptResponse(text).then((value) {
                                 ChattingList cl = ChattingList(
@@ -240,6 +246,11 @@ class _ChattingPageState extends State<ChattingPage> {
                                 setState(() {
                                   list.add(cl);
                                 });
+                                scrollController.animateTo(
+                                  scrollController.position.maxScrollExtent,
+                                  duration: Duration(milliseconds: 300),
+                                  curve: Curves.easeOut,
+                                );
                               });
                             });
                           }
@@ -259,9 +270,14 @@ class _ChattingPageState extends State<ChattingPage> {
                           comment: textEditingController.text,
                           isMyMessage: true);
                       list.add(cl);
-                      text = textEditingController.text;
-                      textEditingController.clear();
                     });
+                    scrollController.animateTo(
+                      scrollController.position.maxScrollExtent,
+                      duration: Duration(milliseconds: 300),
+                      curve: Curves.easeOut,
+                    );
+                    text = textEditingController.text;
+                    textEditingController.clear();
                     gptResponse(text).then((value) {
                       ChattingList cl = ChattingList(
                           isMyMessage: false,
@@ -270,6 +286,11 @@ class _ChattingPageState extends State<ChattingPage> {
                       setState(() {
                         list.add(cl);
                       });
+                      scrollController.animateTo(
+                        scrollController.position.maxScrollExtent,
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeOut,
+                      );
                     });
                   },
                   child: Padding(
