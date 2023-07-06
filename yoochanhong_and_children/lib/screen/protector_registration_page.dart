@@ -119,7 +119,13 @@ class _ProtectorRegistrationPageState extends State<ProtectorRegistrationPage> {
                     Navigator.push(
                       context,
                       Transition(
-                        child: const MainPage(),
+                        child: MainPage(
+                          id: value.id!.toInt(),
+                          name: value.name.toString(),
+                          guardianName: value.guardianName.toString(),
+                          guardianPhoneNumber:
+                              value.guardianPhoneNumber.toString(),
+                        ),
                         transitionEffect: TransitionEffect.RIGHT_TO_LEFT,
                       ),
                     );
